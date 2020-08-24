@@ -15,8 +15,10 @@
             throw new Error('cannot find the global object');
     };
     var globalObj = getGlobalObject();
-    !globalObj.globalSeparateConfigYonbipHostFile && (globalObj.globalSeparateConfigYonbipHostFile = {});
-    !globalObj.globalSeparateConfigYonbipHostFile.config && (globalObj.globalSeparateConfigYonbipHostFile.config = {
+    globalObj.globalYonyouCliTopLevelObj = globalObj.globalYonyouCliTopLevelObj || {};
+    var globalYonyouCliTopLevelObj = globalObj.globalYonyouCliTopLevelObj;
+    !globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig && (globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {});
+    !globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig && (globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {
         dev: {
 
         },
