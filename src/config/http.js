@@ -1,6 +1,8 @@
 import axios from 'axios';
 import configHost from './config.js';
+let globalENVObj = require('../asset/utils/globalENVObj.js');
 
+let globalCurrentBrowserLanguage = globalENVObj.globalYonyouCliTopLevelObj.globalCurrentBrowserLanguage;
 axios.defaults.timeout = 2*60*1000;
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
@@ -13,9 +15,9 @@ axios.interceptors.request.use(
       config.url = apiHost + url;
     }
     if(config.url.indexOf('?') != -1) {
-        config.url += ('&lang=' + window.WEB_DIWORK_GLOBAL_CONFIG_APPROVE_LANG);
+        config.url += ('&lang=' + globalCurrentBrowserLanguage);
     }else {
-        config.url += ('?lang=' + window.WEB_DIWORK_GLOBAL_CONFIG_APPROVE_LANG);
+        config.url += ('?lang=' + globalCurrentBrowserLanguage);
     }
     return config;
   },

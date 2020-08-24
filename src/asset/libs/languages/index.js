@@ -29,8 +29,8 @@ if (language.indexOf('en') >= 0) {
     i18nLocalLanguage = 'zh';
     currentLocale = zh;
 }
-globalObj.globalYonyouCliTopLevelObj = globalObj.globalYonyouCliTopLevelObj || {};
-globalObj.globalYonyouCliTopLevelObj.globalCurrentBrowserLanguage = i18nLocalLanguage;
+globalENVObj.globalYonyouCliTopLevelObj = globalENVObj.globalYonyouCliTopLevelObj || {};
+globalENVObj.globalYonyouCliTopLevelObj.globalCurrentBrowserLanguage = i18nLocalLanguage;
 
 const i18n = new VueI18n({
     locale: i18nLocalLanguage,
