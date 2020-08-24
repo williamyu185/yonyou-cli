@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CONFIG from './config.js';
+import configHost from './config.js';
 
 axios.defaults.timeout = 2*60*1000;
 axios.defaults.withCredentials = true;
@@ -8,7 +8,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.interceptors.request.use(
   config => {
     let url = config.url,
-      apiHost = CONFIG[__ENV__].apiHost || '';
+      apiHost = configHost.apiHost || '';
     if (!/[http|https]:\/\//gi.test(url)) {
       config.url = apiHost + url;
     }

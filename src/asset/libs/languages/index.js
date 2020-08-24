@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n';
 import zh from './zh-CN.js';
 import tw from './zh-TW.js';
 import en from './en-US.js';
+let globalENVObj = require('../../utils/globalENVObj.js');
 
 Vue.use(VueI18n);
 
@@ -28,7 +29,8 @@ if (language.indexOf('en') >= 0) {
     i18nLocalLanguage = 'zh';
     currentLocale = zh;
 }
-window.globalCurrentBrowserLanguage = i18nLocalLanguage;
+globalObj.globalYonyouCliTopLevelObj = globalObj.globalYonyouCliTopLevelObj || {};
+globalObj.globalYonyouCliTopLevelObj.globalCurrentBrowserLanguage = i18nLocalLanguage;
 
 const i18n = new VueI18n({
     locale: i18nLocalLanguage,
