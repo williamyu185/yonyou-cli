@@ -38,6 +38,10 @@
                 apiHost: '',
                 lang: ''
             },
+            smallProgrameTest: {
+                apiHost: '',
+                lang: ''
+            },
             yonbip: {
                 apiHost: '',
                 lang: ''
