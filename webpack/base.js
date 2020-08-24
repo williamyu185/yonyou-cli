@@ -3,29 +3,18 @@ const path = require('path');
 // webpack 4.0 中用来抽离css 的插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-let host = require('../src/config/config.js');
-const HappyPack = require('happypack');
 const os = require('os');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 // 针对 Lodash 按需打包
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const nodeModules = path.resolve(__dirname, '../node_modules');
+const nodeENV = process.env.NODE_ENV;
 const isDev = (nodeENV != 'prev' && nodeENV != 'production');
 const isLocalServeENV = (nodeENV == 'development');
 const uglify = require('uglifyjs-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
-const happyThreadPool = HappyPack.ThreadPool({
-	size: os.cpus().length
-});
-const createHappyPlugin = function(id, loaders) {
-	return new HappyPack({
-		id: id,
-		loaders: loaders,
-		threadPool: happyThreadPool,
-	});
-};
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const projectPath = path.resolve(__dirname, '../');
 const sourceCodePath = path.join(projectPath, '/src');
@@ -143,8 +132,7 @@ module.exports = {
 							// 而@babel/transform-runtime将按需增加要使用的es6方法,且是在模块中通过require引入的,不污染内置对象原型
 							plugins: ['@babel/plugin-transform-runtime']
 						}
-					},
-					'happypack/loader?id=happy-babel-js'
+					}
 				]
 			}, {
 				test: /\.(css|less)$/,
@@ -237,7 +225,6 @@ module.exports = {
 			favicon: path.join(sourceCodePath, '/asset/ico.ico'),
 			template: path.join(sourceCodePath, '/template/index.html'),
 			inject: true,
-			lang: host[nodeENV].lang,
 			bundleTime: bundleTime(),
 			preventConfigCache: new Date().getTime(),
 		}),
@@ -246,39 +233,6 @@ module.exports = {
 			filename: 'css/[name].[contenthash:8].css',
 			chunkFilename: '[name].css'
 		}),
-		createHappyPlugin('happy-babel-js', [{
-			loader: 'babel-loader',
-			query: {
-				// cacheDirectory: isDev,
-				// presets: isDev ? ['react-hmre'] : []
-			}
-		}]),
-		createHappyPlugin('css-pack', ['css-loader']),
-		createHappyPlugin('vue', [{
-			loader: 'vue',
-			options: {
-				loaders: {
-					js: 'happypack/loader?id=babel'
-				}
-			}
-		}]),
-		createHappyPlugin('happy-less', [{
-			loader: 'css-loader',
-			query: {
-				minimize: false,
-				importLoaders: 2
-			}
-		}, {
-			loader: 'less-loader',
-			query: {}
-		}]),
-		createHappyPlugin('happy-font', [{
-			loader: 'file-loader',
-			query: {
-				limit: 8192,
-				name: 'font/[name].[hash:8].[ext]'
-			}
-		}]),
 		//打包百分比进度显示
 		new ProgressBarPlugin({
 			format: chalk.blue.bold('build  ') + chalk.cyan('[:bar]') + chalk.green.bold(':percent') + ' (' + chalk.magenta(':elapsed') + ' seconds) ',
@@ -287,11 +241,13 @@ module.exports = {
 		//按需打包Lodash,各版本浏览器工具方法兼容
 		new LodashModuleReplacementPlugin(),
         //集中拷贝静态资源
-        new copyWebpackPlugin([{
-			//打包的静态资源目录地址
-			from: path.resolve(__dirname, '../src/config/configReplace.js'),
-			//打包到dist下面的public
-			to: '../dist/config.js'
-		}]),
+        new copyWebpackPlugin({
+			patterns: [{
+				//打包的静态资源目录地址
+				from: '../src/config/configReplace.js',
+				//打包到dist下面的public
+				to: '../dist/config.js'
+			}]
+		}),
 	]
 };

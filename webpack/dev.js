@@ -1,12 +1,12 @@
 var webpack = require('webpack');
 var config = require('./base.js');
 var WebpackDevServer = require('webpack-dev-server');
-config.entry.context.unshift('webpack-dev-server/client?http://test.chaoke.com:9000/');
+config.entry.context.unshift('webpack-dev-server/client?http://localhost:8080/');
 var compiler = webpack(config);
 new WebpackDevServer(compiler, {
     //每次都打开一个网页
     open: true,
-    host: 'test.chaoke.com',
+    host: 'localhost',
     //不在控制台打印任何 log
     quiet: false,
     disableHostCheck: true,
@@ -40,7 +40,7 @@ new WebpackDevServer(compiler, {
     // 使用颜色，有利于找出关键信息，只能在控制台中使用 package.json scripts
     // color: false,
     //对外服务的内容来源，只有在提供静态文件访问的情况下才需要使用该配置
-    publicPath: 'http://test.chaoke.com:9000/',
+    publicPath: 'http://localhost:8080/',
     //对外提供的访问内容的路径
     contentBase: '../dist',
     ////让所有404的页面定位到index.html
@@ -51,4 +51,4 @@ new WebpackDevServer(compiler, {
         // 排除一些巨大的文件夹
         ignored: /node_modules/
     }
-}).listen(9000);
+}).listen(8080);

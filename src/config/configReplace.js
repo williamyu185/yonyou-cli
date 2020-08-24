@@ -20,19 +20,23 @@
     !globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig && (globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {});
     !globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig && (globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {
         dev: {
-            apiHost: ''
+            apiHost: '',
+            lang: ''
         },
         test: {
-            apiHost: ''
+            apiHost: '',
+            lang: ''
         },
         daily: {
             apiHost: ''
         },
         prev: {
-            apiHost: ''
+            apiHost: '',
+            lang: ''
         },
         production: {
-            apiHost: ''
+            apiHost: '',
+            lang: ''
         }
     });
 })();
