@@ -17,30 +17,31 @@
     var globalObj = getGlobalObject();
     globalObj.globalYonyouCliTopLevelObj = globalObj.globalYonyouCliTopLevelObj || {};
     var globalYonyouCliTopLevelObj = globalObj.globalYonyouCliTopLevelObj;
-    !globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig && (globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {});
-    !globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig && (globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {
-        dev: {
-            apiHost: '',
-            lang: ''
-        },
-        test: {
-            apiHost: '',
-            lang: ''
-        },
-        daily: {
-            apiHost: ''
-        },
-        prev: {
-            apiHost: '',
-            lang: ''
-        },
-        production: {
-            apiHost: '',
-            lang: ''
-        },
-        yonbip: {
-            apiHost: '',
-            lang: ''
-        }
-    });
+    if(!globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig) {
+        globalYonyouCliTopLevelObj.globalSeparateYonbipHostFileConfig = {
+            dev: {
+                apiHost: '',
+                lang: ''
+            },
+            test: {
+                apiHost: '',
+                lang: ''
+            },
+            daily: {
+                apiHost: ''
+            },
+            prev: {
+                apiHost: '',
+                lang: ''
+            },
+            production: {
+                apiHost: '',
+                lang: ''
+            },
+            yonbip: {
+                apiHost: '',
+                lang: ''
+            }
+        };
+    }
 })();

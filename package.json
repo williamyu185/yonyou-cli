@@ -1,6 +1,6 @@
 {
   "name": "coordination-cli",
-  "version": "2.0.3",
+  "version": "2.0.41",
   "description": "",
   "main": "./dist",
   "scripts": {
@@ -10,6 +10,7 @@
     "prev": "npm run cleanAndInstall && cross-env NODE_ENV=prev webpack --progress -p --config ./webpack/prev.js",
     "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production webpack -p --config ./webpack/build.js",
     "yonbip": "npm run clean && cross-env NODE_ENV=yonbip webpack -p --config ./webpack/build.js",
+    "smallProgrameTest": "npm run cleanAndInstall && cross-env NODE_ENV=smallProgrameTest webpack --progress -p --config ./webpack/test.js",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
   "bin": {
