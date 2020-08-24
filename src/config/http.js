@@ -26,10 +26,10 @@ axios.interceptors.request.use((config) => {
 );
 
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     return response.data;
   },
-  error => {
+  (error) => {
     return Promise.reject(error);
   }
 );
