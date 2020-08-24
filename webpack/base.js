@@ -241,7 +241,8 @@ module.exports = {
 			template: path.join(sourceCodePath, '/template/index.html'),
 			inject: true,
 			lang: host[nodeENV].lang,
-			bundleTime: bundleTime()
+			bundleTime: bundleTime(),
+			preventConfigCache: new Date().getTime(),
 		}),
 		//提取打包，css文件重复打包的问题
 		new MiniCssExtractPlugin({
@@ -289,6 +290,11 @@ module.exports = {
 		//按需打包Lodash,各版本浏览器工具方法兼容
 		new LodashModuleReplacementPlugin(),
         //集中拷贝静态资源
-        new copyWebpackPlugin([]),
+        new copyWebpackPlugin([{
+			//打包的静态资源目录地址
+			from: path.resolve(__dirname, '../src/config/configReplace.js'),
+			//打包到dist下面的public
+			to: '../dist/config.js'
+		}]),
 	]
 };
