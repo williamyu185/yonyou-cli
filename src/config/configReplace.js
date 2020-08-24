@@ -1,9 +1,9 @@
 (function() {
     var getGlobalObject = function() {
-            if (typeof globalThis !== 'undefined') { 
+            if (typeof globalThis !== 'undefined') {
                 return globalThis; 
             }
-            if (typeof self !== 'undefined') { 
+            if (typeof self !== 'undefined') {
                 return self; 
             }
             if (typeof window !== 'undefined') {
