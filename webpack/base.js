@@ -14,7 +14,7 @@ const nodeModules = path.resolve(__dirname, '../node_modules');
 const nodeENVArr = process.env.NODE_ENV.split('__');
 const nodeENV = nodeENVArr[0];
 const currentProjectName = nodeENVArr[1];
-const isDev = (nodeENV != 'prevProduction' && nodeENV != 'production');
+const isDev = (nodeENV != 'prev' && nodeENV != 'production');
 const isLocalServeENV = (nodeENV == 'development');
 const uglify = require('uglifyjs-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
