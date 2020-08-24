@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./webpack/dev.js --colors --progress",
-    "test": "npm run cleanAndInstall && cross-env NODE_ENV=test__supervise webpack --progress -p --config ./webpack/test.js",
-    "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily__supervise webpack --progress -p --config ./webpack/daily.js",
-    "pre": "npm run cleanAndInstall && cross-env NODE_ENV=prevProduction__supervise webpack --progress -p --config ./webpack/prevProduction.js",
-    "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production__supervise webpack -p --config ./webpack/build.js",
+    "test": "npm run cleanAndInstall && cross-env NODE_ENV=test webpack --progress -p --config ./webpack/test.js",
+    "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily webpack --progress -p --config ./webpack/daily.js",
+    "prev": "npm run cleanAndInstall && cross-env NODE_ENV=prev webpack --progress -p --config ./webpack/prevProduction.js",
+    "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production webpack -p --config ./webpack/build.js",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
   "author": "dingyu",
-  "license": "MIT",
+  "license": "GNU",
   "dependencies": {
     "axios": "^0.20.0",
     "element-ui": "^2.13.0",
