@@ -9,6 +9,7 @@
     "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily webpack --progress -p --config ./webpack/daily.js",
     "prev": "npm run cleanAndInstall && cross-env NODE_ENV=prev webpack --progress -p --config ./webpack/prev.js",
     "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production webpack -p --config ./webpack/build.js",
+    "yonbip": "npm run clean && cross-env NODE_ENV=yonbip webpack -p --config ./webpack/build.js",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
   "author": "dingyu",

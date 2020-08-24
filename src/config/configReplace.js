@@ -37,6 +37,10 @@
         production: {
             apiHost: '',
             lang: ''
+        },
+        yonbip: {
+            apiHost: '',
+            lang: ''
         }
     });
 })();
