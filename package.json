@@ -12,6 +12,9 @@
     "yonbip": "npm run clean && cross-env NODE_ENV=yonbip webpack -p --config ./webpack/build.js",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
+  "bin": {
+    "yonyou-cli": "./bin/index.js"
+  }
   "author": "dingyu",
   "license": "GNU",
   "dependencies": {
