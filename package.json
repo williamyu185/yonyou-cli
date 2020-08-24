@@ -13,7 +13,7 @@
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
   "bin": {
-    "yonyou-cli": "./bin/index.js"
+    "coordination-cli": "./bin/index.js"
   },
   "author": "dingyu",
   "license": "GNU",
