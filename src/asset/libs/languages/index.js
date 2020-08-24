@@ -42,6 +42,5 @@ const i18n = new VueI18n({
 });
 export default {
     i18n,
-    locale: currentLocale,
-    YYZoneLocale
+    locale: currentLocale
 };
