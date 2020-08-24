@@ -1,26 +1,25 @@
 {
-  "name": "supervise",
+  "name": "yonyou-cli",
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./webpack/dev.js --colors --progress",
-    "test-build": "npm run cleanAndInstall && cross-env NODE_ENV=test__supervise webpack --progress -p --config ./webpack/test.js",
-    "daily-build": "npm run cleanAndInstall && cross-env NODE_ENV=daily__supervise webpack --progress -p --config ./webpack/daily.js",
-    "pre-build": "npm run cleanAndInstall && cross-env NODE_ENV=prevProduction__supervise webpack --progress -p --config ./webpack/prevProduction.js",
-    "dist-build": "npm run cleanAndInstall && cross-env NODE_ENV=production__supervise webpack -p --config ./webpack/build.js",
-    "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ../../web/static/supervise"
+    "test": "npm run cleanAndInstall && cross-env NODE_ENV=test__supervise webpack --progress -p --config ./webpack/test.js",
+    "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily__supervise webpack --progress -p --config ./webpack/daily.js",
+    "pre": "npm run cleanAndInstall && cross-env NODE_ENV=prevProduction__supervise webpack --progress -p --config ./webpack/prevProduction.js",
+    "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production__supervise webpack -p --config ./webpack/build.js",
+    "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
   "author": "dingyu",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.20.0",
     "element-ui": "^2.13.0",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.3",
     "vue-router": "^3.1.4",
-    "vuex": "^3.1.2",
-    "yyzone": "^1.1.87"
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -35,28 +34,28 @@
     "babel-preset-stage-2": "^6.24.1",
     "classnames": "^2.2.6",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "cross-env": "^6.0.3",
-    "css-loader": "^3.4.2",
+    "copy-webpack-plugin": "^6.0.3",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.2.1",
     "es6-promise": "^4.2.8",
-    "file-loader": "^5.0.2",
+    "file-loader": "^6.0.0",
     "happypack": "^5.0.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^4.3.0",
     "less": "^3.10.3",
-    "less-loader": "^5.0.0",
+    "less-loader": "^6.2.0",
     "lodash-webpack-plugin": "^0.11.5",
-    "mini-css-extract-plugin": "^0.9.0",
+    "mini-css-extract-plugin": "^0.10.0",
     "postcss-loader": "^3.0.0",
     "progress-bar-webpack-plugin": "^2.1.0",
     "style-loader": "^1.1.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "url-loader": "^3.0.0",
+    "url-loader": "^4.1.0",
     "vue-loader": "^15.8.3",
     "vue-template-compiler": "^2.6.11",
     "vuedraggable": "^2.23.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.1.2"
   }
 }
