@@ -14,7 +14,7 @@
   },
   "bin": {
     "yonyou-cli": "./bin/index.js"
-  }
+  },
   "author": "dingyu",
   "license": "GNU",
   "dependencies": {
