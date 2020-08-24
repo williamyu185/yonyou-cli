@@ -2,7 +2,7 @@
   "name": "yonyou-cli",
   "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./webpack/dev.js --colors --progress",
     "test": "npm run cleanAndInstall && cross-env NODE_ENV=test webpack --progress -p --config ./webpack/test.js",
