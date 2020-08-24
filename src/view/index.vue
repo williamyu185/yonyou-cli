@@ -13,7 +13,7 @@ body {
 <!-- </keep-alive> -->
 </template>
 <script>
-window.allGlobalObj = {};
+window.allGlobalObj = window.globalYonyouCliTopLevelObj || {};
 let allGlobalObj = window.allGlobalObj;
 allGlobalObj.refreshList = function(event) {};
 allGlobalObj.openWindow = function(data) {

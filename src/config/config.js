@@ -1,18 +1,6 @@
+require('./configReplace');
+let globalENVObj = require('../asset/utils/globalENVObj.js');
 
-module.exports = {
-  dev: {
+let config = globalENVObj.globalSeparateConfigYonbipHostFile.config;
 
-  },
-  test: {
-
-  },
-  daily: {
-
-  },
-  prev: {
-
-  },
-  production: {
-
-  },
-}
+module.exports = config;
