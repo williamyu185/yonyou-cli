@@ -244,7 +244,7 @@ module.exports = {
         new copyWebpackPlugin({
 			patterns: [{
 				//打包的静态资源目录地址
-				from: '../src/config/configReplace.js',
+				from: path.resolve(__dirname, '../src/config/configReplace.js'),
 				//打包到dist下面的public
 				to: '../dist/config.js'
 			}]
