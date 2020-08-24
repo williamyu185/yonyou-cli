@@ -11,9 +11,6 @@ const chalk = require('chalk');
 // 针对 Lodash 按需打包
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const nodeModules = path.resolve(__dirname, '../node_modules');
-const nodeENVArr = process.env.NODE_ENV.split('__');
-const nodeENV = nodeENVArr[0];
-const currentProjectName = nodeENVArr[1];
 const isDev = (nodeENV != 'prev' && nodeENV != 'production');
 const isLocalServeENV = (nodeENV == 'development');
 const uglify = require('uglifyjs-webpack-plugin');
@@ -32,7 +29,7 @@ const createHappyPlugin = function(id, loaders) {
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const projectPath = path.resolve(__dirname, '../');
 const sourceCodePath = path.join(projectPath, '/src');
-const distExportPath = path.join(projectPath, '../../web/static/' + currentProjectName);
+const distExportPath = path.join(projectPath, '../dist');
 const bundleTime = function() {
 	let date = new Date();
 	let year = date.getFullYear();
