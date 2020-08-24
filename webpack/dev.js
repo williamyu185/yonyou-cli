@@ -42,7 +42,7 @@ new WebpackDevServer(compiler, {
     //对外服务的内容来源，只有在提供静态文件访问的情况下才需要使用该配置
     publicPath: 'http://test.chaoke.com:9000/',
     //对外提供的访问内容的路径
-    contentBase: '../../../web/static/',
+    contentBase: '../dist',
     ////让所有404的页面定位到index.html
     historyApiFallback: true,
     watchOptions: {
