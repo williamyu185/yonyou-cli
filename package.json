@@ -15,6 +15,10 @@
   "bin": {
     "coordination-cli": "./bin/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williamyu185/yonyou-cli.git"
+  },
   "author": "dingyu",
   "license": "GNU",
   "dependencies": {
