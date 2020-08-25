@@ -3,7 +3,6 @@ const path = require('path');
 // webpack 4.0 中用来抽离css 的插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const os = require('os');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 // 针对 Lodash 按需打包
