@@ -20,31 +20,25 @@
     if(!globalYonyouCoordinationCliTopLevelObj.globalSeparateYonbipHostFileConfig) {
         globalYonyouCoordinationCliTopLevelObj.globalSeparateYonbipHostFileConfig = {
             dev: {
-                apiHost: '',
-                lang: ''
+                mainHost: ''
             },
             test: {
-                apiHost: '',
-                lang: ''
+                mainHost: ''
             },
             daily: {
-                apiHost: ''
+                mainHost: ''
             },
             prev: {
-                apiHost: '',
-                lang: ''
+                mainHost: ''
             },
             production: {
-                apiHost: '',
-                lang: ''
+                mainHost: ''
             },
             smallProgramTest: {
-                apiHost: '',
-                lang: ''
+                mainHost: ''
             },
             yonbip: {
-                apiHost: '',
-                lang: ''
+                mainHost: ''
             }
         };
     }

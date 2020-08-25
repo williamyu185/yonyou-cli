@@ -9,9 +9,9 @@ axios.defaults.crossDomain = true;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.interceptors.request.use((config) => {
     let url = config.url;
-    let apiHost = configHost.apiHost || '';
+    let mainHost = configHost.mainHost || '';
     if (!/[http|https]:\/\//gi.test(url)) {
-      config.url = apiHost + url;
+      config.url = mainHost + url;
     }
     if(config.url.indexOf('?') != -1) {
         config.url += ('&lang=' + globalCurrentBrowserLanguage);
