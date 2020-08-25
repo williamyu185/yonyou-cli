@@ -6,7 +6,7 @@ child_process.execSync('git clone https://github.com/williamyu185/yonyou-cli.git
     if (error !== null) {
       console.log('exec error: ' + error);
     }else {
-        console.log('Download successful!');
+      console.log('Download successful!');
     }
 });
 child_process.execSync('cd ./' + projectName + '&& rm -rf .git && cd ../', {}, function (error, stdout, stderr) {
