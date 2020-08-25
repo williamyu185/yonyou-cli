@@ -10,7 +10,6 @@ import entry from './view/index.vue';
 import language from './asset/libs/languages/index.js';
 import Vuex from 'vuex';
 import localStore from './store/index.js';
-import globalENVObj, { console } from '../src/asset/utils/globalENVObj.js'
 // npm install --sava url-search-params
 // import URLSearchParams from 'url-search-params';
 // if(!window.URLSearchParams) {
@@ -24,8 +23,6 @@ import globalENVObj, { console } from '../src/asset/utils/globalENVObj.js'
 //         }
 //     };
 // }
-globalENVObj.globalYonyouCliTopLevelObj = globalENVObj.globalYonyouCliTopLevelObj || {};
-globalENVObj.globalYonyouCliTopLevelObj.isSmallPrograme = /smallPrograme/ig.test(__ENV__);
 Vue.prototype.$http = axios;
 Vue.use(ElementUI, {
     locale: language.locale

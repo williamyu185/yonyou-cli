@@ -38,7 +38,7 @@
                 apiHost: '',
                 lang: ''
             },
-            smallProgrameTest: {
+            smallProgramTest: {
                 apiHost: '',
                 lang: ''
             },
