@@ -10,6 +10,14 @@ import entry from './view/index.vue';
 import language from './asset/libs/languages/index.js';
 import Vuex from 'vuex';
 import localStore from './store/index.js';
+
+// 如需要使用yyzone进行开发,请将下列几行代码取消注释
+// import 'yyzone/dist/styles/yyzone.min.css';
+// import YYZone from 'yyzone/dist/yyzone.js';
+// Vue.use(YYZone, {
+//     locale: language.YYZoneLocale
+// });
+
 // npm install --sava url-search-params
 // import URLSearchParams from 'url-search-params';
 // if(!window.URLSearchParams) {
