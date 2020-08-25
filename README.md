@@ -21,7 +21,7 @@
 #### 5.1）src/components/index.vue文件用于html结构化布局，为了实现路由的扩展性，严禁对src/view/index.vue文件做任何改动。
 ##
 ### 6.css样式规范
-#### 6.1）全局样式统一写在src/components/index.vue文件中的:global {}中，必须做好css命名空间，特别是覆盖其他ui库组件的样式。
+#### 6.1）全局样式统一写在src/components/index.vue文件的:global {}中，必须做好css命名空间，特别是覆盖其他ui库组件的样式。
 ##
 ### 7.yonbip私有化部署前端解决方案
 #### 7.1）src/config/configReplace.js是接口域名替换文件，在项目私有化部署的过程中，需在后台开发人员配合下，在执行npm run yonbip指令时，加入勾子函数，在打包结束后替换此文件。该解决方案的目的在于只维护一套代码就能实现公网与不同客户私有化服务器的代码部署。
