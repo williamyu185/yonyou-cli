@@ -5,7 +5,7 @@
 # 二、相关规范与配置项解读
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalYonyouCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalYonyouCliTopLevelObj对象下。
-#### 1.2）由于项目历史原因，保留window.WEB_DIWORK_GLOBAL_CONFIG全局对象，禁止对该对象做任何操作。
+#### 1.2）由于历史原因，保留window.WEB_DIWORK_GLOBAL_CONFIG全局对象，禁止对该对象做任何操作。
 ##
 ### 2.package.json中的环境变量
 #### 2.1）小程序包环境变量以smallProgram开头，全局变量window.globalYonyouCliTopLevelObj.isSmallProgram用来标识当前开发包是否是小程序输出包，依据此全局变量，可作出相应的条件判断，实现H5和小程序开发在业务逻辑和调用桥接时的区别化处理，实现H5和小程序共用一套代码。
