@@ -1,6 +1,6 @@
 # 一、安装与使用
 ### 1.全局安装：npm install -g coordination-cli
-### 2.全局指令使用：coordination-cli < yourProjectName >。如果不传入自定义项目名，默认项目名称为coordination-cli
+### 2.全局指令使用：coordination-cli \<yourProjectName\>。如果不传入自定义项目名，默认项目名称为coordination-cli
 #
 # 二、相关规范与配置项解读
 ### 1.全局变量
