@@ -2,7 +2,7 @@ import axios from 'axios';
 import configHost from './config.js';
 let globalENVObj = require('../asset/utils/globalENVObj.js');
 
-let globalCurrentBrowserLanguage = globalENVObj.globalYonyouCliTopLevelObj.globalCurrentBrowserLanguage;
+let globalCurrentBrowserLanguage = globalENVObj.globalYonyouCoordinationCliTopLevelObj.globalCurrentBrowserLanguage;
 axios.defaults.timeout = 2*60*1000;
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;

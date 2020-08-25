@@ -37,8 +37,8 @@ if (language.indexOf('en') >= 0) {
     YYZoneLocale = 'zhs';
     YYMuiLocale = 'zh-cn';
 }
-globalENVObj.globalYonyouCliTopLevelObj = globalENVObj.globalYonyouCliTopLevelObj || {};
-globalENVObj.globalYonyouCliTopLevelObj.globalCurrentBrowserLanguage = i18nLocalLanguage;
+globalENVObj.globalYonyouCoordinationCliTopLevelObj = globalENVObj.globalYonyouCoordinationCliTopLevelObj || {};
+globalENVObj.globalYonyouCoordinationCliTopLevelObj.globalCurrentBrowserLanguage = i18nLocalLanguage;
 
 const i18n = new VueI18n({
     locale: i18nLocalLanguage,

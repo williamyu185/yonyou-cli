@@ -13,8 +13,8 @@ body {
 <!-- </keep-alive> -->
 </template>
 <script>
-window.globalYonyouCliTopLevelObj = window.globalYonyouCliTopLevelObj || {};
-window.globalYonyouCliTopLevelObj.isSmallProgram = /smallProgram/ig.test(__ENV__);
+window.globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj || {};
+window.globalYonyouCoordinationCliTopLevelObj.isSmallProgram = /smallProgram/ig.test(__ENV__);
 
 export default {
 
