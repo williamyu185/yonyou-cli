@@ -2,6 +2,7 @@
 .entry {
     min-width: 1200px;
     height: 100%;
+    font-size: 15px;
     overflow-y: auto;
     .mainContent {
         height: 100%;
