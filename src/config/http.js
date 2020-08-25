@@ -2,7 +2,7 @@ import axios from 'axios';
 import configHost from './config.js';
 let globalENVObj = require('../asset/utils/globalENVObj.js');
 
-let globalCurrentBrowserLanguage = globalENVObj.globalYonyouCoordinationCliTopLevelObj.globalCurrentBrowserLanguage;
+let currentBrowserLanguage = globalENVObj.globalYonyouCoordinationCliTopLevelObj.currentBrowserLanguage;
 axios.defaults.timeout = 2*60*1000;
 axios.defaults.withCredentials = true;
 axios.defaults.crossDomain = true;
@@ -14,9 +14,9 @@ axios.interceptors.request.use((config) => {
       config.url = mainHost + url;
     }
     if(config.url.indexOf('?') != -1) {
-        config.url += ('&lang=' + globalCurrentBrowserLanguage);
+        config.url += ('&lang=' + currentBrowserLanguage);
     }else {
-        config.url += ('?lang=' + globalCurrentBrowserLanguage);
+        config.url += ('?lang=' + currentBrowserLanguage);
     }
     return config;
   },

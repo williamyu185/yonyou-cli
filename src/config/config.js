@@ -2,7 +2,7 @@ require('./configReplace');
 let globalENVObj = require('../asset/utils/globalENVObj.js');
 
 let globalYonyouCoordinationCliTopLevelObj = globalENVObj.globalYonyouCoordinationCliTopLevelObj;
-let globalSeparateYonbipHostFileConfig = globalYonyouCoordinationCliTopLevelObj.globalSeparateYonbipHostFileConfig;
-let ENVHost = globalSeparateYonbipHostFileConfig[__ENV__];
+let separateYonbipHostFileConfig = globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig;
+let ENVHost = separateYonbipHostFileConfig[__ENV__];
 
-module.exports = (ENVHost && (ENVHost instanceof Object)) ? ENVHost : globalSeparateYonbipHostFileConfig;
+module.exports = (ENVHost && (ENVHost instanceof Object)) ? ENVHost : separateYonbipHostFileConfig;

@@ -17,8 +17,8 @@
     var globalObj = getGlobalObject();
     globalObj.globalYonyouCoordinationCliTopLevelObj = globalObj.globalYonyouCoordinationCliTopLevelObj || {};
     var globalYonyouCoordinationCliTopLevelObj = globalObj.globalYonyouCoordinationCliTopLevelObj;
-    if(!globalYonyouCoordinationCliTopLevelObj.globalSeparateYonbipHostFileConfig) {
-        globalYonyouCoordinationCliTopLevelObj.globalSeparateYonbipHostFileConfig = {
+    if(!globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig) {
+        globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig = {
             dev: {
                 mainHost: ''
             },
