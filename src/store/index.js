@@ -1,9 +1,9 @@
-import supervise from './supervise';
+import coordination from './coordination';
 import createLogger from 'vuex/dist/logger';
 
 let store = {
         modules: {
-            supervise
+            coordination
         },
         plugins: (__ENV__ == 'development' ? [createLogger()] : [])
 };
