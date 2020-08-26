@@ -8,7 +8,7 @@
 #### 1.2）由于历史原因，保留window.WEB_DIWORK_GLOBAL_CONFIG全局对象，禁止对该对象做任何操作。
 ##
 ### 2.package.json中的环境变量
-#### 2.1）小程序包环境变量以smallProgram开头，全局变量window.globalYonyouCoordinationCliTopLevelObj.isSmallProgram用来标识当前开发包是否是小程序输出包，依据此全局变量，可作出相应的条件判断，实现H5和小程序开发在业务逻辑和调用桥接时的区别化处理，实现H5和小程序共用一套代码。
+#### 2.1）小程序包环境变量以smallProgram开头，全局变量window.globalYonyouCoordinationCliTopLevelObj.isSmallProgram用来标识当前开发包是否是小程序输出包，依据此全局变量，可作出相应的条件判断，实现H5和小程序开发在业务逻辑和调用桥接时的区别化处理，同时实现H5和小程序共用一套代码。
 ##
 ### 3.关于yyzone的使用
 #### 3.1）yyzone是用友协同部开发的一套web端ui库，如想使用该组件库，可在src/main.js文件中取消掉相关代码注释，即可开箱使用。
