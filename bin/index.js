@@ -5,11 +5,11 @@ let isInstall = false;
 let shellMsg = {
       projectName: 'coordination-cli'
     };
-let isShellParams = function(param) {
+let isShellParam = function(param) {
   return /^-/ig.test(item);
 };
 arguments.forEach((item, index) => {
-  if(isShellParams(item)) {
+  if(isShellParam(item)) {
     if(item == '-i' || item == '--install') {
       isInstall = true;
     }
