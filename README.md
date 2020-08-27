@@ -12,7 +12,7 @@
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalYonyouCoordinationCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalYonyouCoordinationCliTopLevelObj对象下。
 #### 1.2）由于历史原因，保留window.WEB_DIWORK_GLOBAL_CONFIG全局对象，禁止对该对象做任何操作。
-#### 1.3）为了防止乱用全局变量和全局变量相互冲突，在各文件使用任何全局变量前，必须在src/components/index文件中的globalYonyouCoordinationCliTopLevelObj对象上进行初始化注册，严禁在未经在此文件注册的情况下，在其他文件中直接定义并使用全局变量。
+#### 1.3）为了防止乱用全局变量和全局变量相互冲突，在各文件使用任何全局变量前，必须在src/components/index文件中的globalYonyouCoordinationCliTopLevelObj对象上进行初始化注册，严禁在没有注册的情况下，在其他文件中直接定义并使用全局变量。
 ##
 ### 2.package.json中的环境变量
 #### 2.1）小程序包环境变量以smallProgram开头，全局变量window.globalYonyouCoordinationCliTopLevelObj.isSmallProgram用来标识当前开发包是否是小程序输出包，依据此全局变量，可作出相应的条件判断，实现H5和小程序开发在业务逻辑和调用桥接时的区别化处理，同时实现H5和小程序共用一套代码。
