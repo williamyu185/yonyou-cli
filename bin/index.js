@@ -6,16 +6,16 @@ let shellMsg = {
       projectName: 'coordination-cli'
     };
 let isShellParam = function(param) {
-  return /^-/ig.test(item);
+  return /^-/ig.test(param);
 };
 arguments.forEach((item, index) => {
-  if((index == 0) && !isShellParam(item)) {
-    shellMsg.projectName = item;
-    return;
-  }
   if(isShellParam(item)) {
-    if(item == '-i' || item == '--install') {
+    if((item == '-i') || (item == '--install')) {
       isInstall = true;
+    }
+  }else {
+    if(index == 0) {
+      shellMsg.projectName = item;
     }
   }
 });
