@@ -1,18 +1,27 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
 let arguments = process.argv.splice(2);
-let projectName = arguments[0] || 'coordination-cli';
 let isInstall = false;
+let shellMsg = {
+      projectName: 'coordination-cli'
+    };
+let isShellParams = function(param) {
+  return /^-/ig.test(item);
+};
 arguments.forEach((item, index) => {
-  if(item == '-i' || item == '--install') {
-    isInstall = true;
+  if(isShellParams(item)) {
+    if(item == '-i' || item == '--install') {
+      isInstall = true;
+    }
+  }else {
+    shellMsg.projectName = item;
   }
 });
-let afterClone = 'cd ./' + projectName + ' && rm -rf .git && cd ../';
+let afterClone = 'cd ./' + shellMsg.projectName + ' && rm -rf .git && cd ../';
 if(isInstall) {
-  afterClone = 'cd ./' + projectName + ' && rm -rf .git && npm install && cd ../';;
+  afterClone = 'cd ./' + shellMsg.projectName + ' && rm -rf .git && npm install && cd ../';;
 }
-child_process.exec('git clone https://github.com/williamyu185/yonyou-cli.git ' + projectName, {}, function (error, stdout, stderr) {
+child_process.exec('git clone https://github.com/williamyu185/yonyou-cli.git ' + shellMsg.projectName, {}, function (error, stdout, stderr) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }else {
