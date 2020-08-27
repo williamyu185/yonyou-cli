@@ -31,7 +31,13 @@
 </template>
 <script>
 window.globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj || {};
-window.globalYonyouCoordinationCliTopLevelObj.isSmallProgram = /smallProgram/ig.test(__ENV__);
+let globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj;
+// 任何全局变量在各文件中使用前，必须在此文件和globalYonyouCoordinationCliTopLevelObj进行初始化注册
+// 严禁在未在此文件和globalYonyouCoordinationCliTopLevelObj对象注册的情况下，在其他文件中直接初始化并使用全局变量
+globalYonyouCoordinationCliTopLevelObj = {
+    ...globalYonyouCoordinationCliTopLevelObj,
+    isSmallProgram: /smallProgram/ig.test(__ENV__)
+};
 
 export default {
     data() {
