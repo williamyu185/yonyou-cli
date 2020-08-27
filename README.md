@@ -6,6 +6,8 @@
 #### 3.2）第一个参数如果不以 - 符开头，将认为是即将创建项目的项目名，否则将采用coordination-cli作为默认项目名。
 #### 3.3）选项：
 ##### 3.3.1）-i，--install：创建完项目后将执行npm install为该项目安装node_modules包。
+#### 3.4）如因网络原因，执行指令后项目长时间未创建，请直接下载zip源码包。
+##
 # 二、相关规范与配置项解读
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalYonyouCoordinationCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalYonyouCoordinationCliTopLevelObj对象下。
