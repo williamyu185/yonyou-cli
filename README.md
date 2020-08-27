@@ -2,8 +2,10 @@
 ### 1.全局安装：npm install -g coordination-cli
 ### 2.全局指令使用：coordination-cli \<yourProjectName\>。如果不传入自定义项目名，默认项目名称为coordination-cli
 ### 3.指令集说明（将根据项目实际开发需求，陆续扩展指令集）
-#### 3.1）第一个参数如果不以 - 符开头，将认为是即将创建项目的项目名，否则将采用coordination-cli作为默认项目名。
-#### 3.2）-i或--install，创建完项目后将执行npm install为该项目安装node_modules包。
+#### 3.coordination-cli \<yourProjectName\> [options]
+#### 3.2）第一个参数如果不以 - 符开头，将认为是即将创建项目的项目名，否则将采用coordination-cli作为默认项目名。
+#### 3.3）选项：
+##### 3.3.1）-i，--install：创建完项目后将执行npm install为该项目安装node_modules包。
 # 二、相关规范与配置项解读
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalYonyouCoordinationCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalYonyouCoordinationCliTopLevelObj对象下。
