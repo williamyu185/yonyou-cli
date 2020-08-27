@@ -23,6 +23,8 @@ let afterClone = 'cd ./' + shellMsg.projectName + ' && rm -rf .git && cd ../';
 if(shellMsg.isInstall) {
   afterClone = 'cd ./' + shellMsg.projectName + ' && rm -rf .git && npm install && cd ../';;
 }
+console.log('如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包')
+console.log('下载地址：https://github.com/williamyu185/yonyou-cli')
 child_process.exec('git clone https://github.com/williamyu185/yonyou-cli.git ' + shellMsg.projectName, {}, function (error, stdout, stderr) {
     if (error !== null) {
       console.log('exec error: ' + error);
