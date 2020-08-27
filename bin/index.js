@@ -14,7 +14,7 @@ arguments.forEach((item, index) => {
       isInstall = true;
     }
   }else {
-    shellMsg.projectName = item;
+    (index == 0) && (shellMsg.projectName = item);
   }
 });
 let afterClone = 'cd ./' + shellMsg.projectName + ' && rm -rf .git && cd ../';
