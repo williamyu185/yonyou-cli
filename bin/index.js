@@ -4,9 +4,6 @@ let arguments = process.argv.splice(2);
 let projectName = arguments[0] || 'coordination-cli';
 let isInstall = false;
 arguments.forEach((item, index) => {
-  if(index == 0) {
-    return;
-  }
   if(item == '-i' || item == '--install') {
     isInstall = true;
   }
