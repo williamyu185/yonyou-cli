@@ -3,7 +3,7 @@ import Vue from 'vue';
 import axios from './config/http.js';
 import router from './router/index.js';
 import ElementUI from 'element-ui';
-import './asset/css/flex.less';
+import './asset/css/coordination-cli.less';
 import 'element-ui/packages/theme-chalk/lib/reset.css';
 import 'element-ui/packages/theme-chalk/lib/index.css';
 import entry from './view/index.vue';

@@ -23,8 +23,8 @@
 }
 </style>
 <template>
-<div :class="[a.entry]" class="mb-flex">
-    <div :class="[a.mainContent]" class="mb-flex-1">
+<div :class="[a.entry]" class="coordination-cli-flex">
+    <div :class="[a.mainContent]" class="coordination-cli-flex-1">
         <router-view></router-view>
     </div>
 </div>
