@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
-let arguments = process.argv.splice(2);
+let argvs = process.argv.splice(2);
 let shellMsg = {
       projectName: 'coordination-cli',
       isInstall: false
@@ -9,7 +9,7 @@ let isDesiredShellParam = function(regStr, param) {
   let regExp = new RegExp(regStr, 'ig');
   return regExp.test(param);
 };
-arguments.forEach((item, index) => {
+argvs.forEach((item, index) => {
   if(isDesiredShellParam('^-', item)) {
     if((item == '-i') || (item == '--install')) {
       shellMsg.isInstall = true;
