@@ -30,7 +30,7 @@
     "vue-router": "^3.1.4",
     "vuex": "^3.1.2",
     "yy-mui": "^1.0.47",
-    "yyzone": "^1.1.163"
+    "yyzone": "^1.1.165"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
@@ -45,22 +45,22 @@
     "babel-preset-stage-2": "^6.24.1",
     "classnames": "^2.2.6",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.0.3",
+    "copy-webpack-plugin": "^6.0.4",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
     "es6-promise": "^4.2.8",
     "file-loader": "^6.0.0",
     "happypack": "^5.0.1",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^4.4.1",
     "less": "^3.10.3",
-    "less-loader": "^6.2.0",
+    "less-loader": "^7.0.0",
     "lodash-webpack-plugin": "^0.11.5",
-    "mini-css-extract-plugin": "^0.10.0",
+    "mini-css-extract-plugin": "^0.11.0",
     "postcss-loader": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.1",
     "progress-bar-webpack-plugin": "^2.1.0",
     "style-loader": "^1.1.2",
-    "uglifyjs-webpack-plugin": "^1.0.0-rc.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "vue-loader": "^15.8.3",
     "vue-template-compiler": "^2.6.11",
@@ -68,6 +68,6 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
-    "webpack-merge": "^5.1.2"
+    "webpack-merge": "^5.1.3"
   }
 }

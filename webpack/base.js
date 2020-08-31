@@ -107,6 +107,7 @@ module.exports = {
         },
         // 压缩js代码
 		minimizer: [new uglify({
+			test: /\.js($|\?)/i,
 			// 在使用 uglifyjs-webpack-plugin 时，你必须提供 sourceMap：true 选项来devtool启用 source map 支持
 			sourceMap: true,
 			// 使用多进程并行运行来提高构建速度
@@ -115,7 +116,9 @@ module.exports = {
 			uglifyOptions: {
 				// 去掉debugger
 				drop_debugger: true
-			}
+			},
+			//包含哪些文件
+			include: /\/src/
         })],
 		splitChunks: {
 			cacheGroups: {
