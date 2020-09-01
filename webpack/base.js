@@ -106,20 +106,22 @@ module.exports = {
             name: 'manifest'
         },
         // 压缩js代码
-		minimizer: [new uglify({
-			test: /\.js($|\?)/i,
-			// 在使用 uglifyjs-webpack-plugin 时，你必须提供 sourceMap：true 选项来devtool启用 source map 支持
-			sourceMap: true,
-			// 使用多进程并行运行来提高构建速度
-			parallel: true,
-			// UglifyJS 压缩选项
-			uglifyOptions: {
-				// 去掉debugger
-				drop_debugger: true
-			},
-			//包含哪些文件
-			include: /\/src/
-        })],
+		minimizer: [
+			new uglify({
+				test: /\.js$/i,
+				// 在使用 uglifyjs-webpack-plugin 时，你必须提供 sourceMap：true 选项来devtool启用 source map 支持
+				sourceMap: true,
+				// 使用多进程并行运行来提高构建速度
+				parallel: true,
+				// UglifyJS 压缩选项
+				uglifyOptions: {
+					// 去掉debugger
+					drop_debugger: true
+				},
+				//包含哪些文件
+				include: [/\/node_modules/, /\/webpack/]
+			})
+		],
 		splitChunks: {
 			cacheGroups: {
                 // 将多个css chunk合并成一个css文件  项目工程中自定义的公共样式及引入第三方组件的样式
