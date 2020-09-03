@@ -19,7 +19,7 @@
     var globalYonyouCoordinationCliTopLevelObj = globalObj.globalYonyouCoordinationCliTopLevelObj;
     if(!globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig) {
         globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig = {
-            dev: {
+            development: {
                 mainHost: ''
             },
             test: {
