@@ -30,6 +30,23 @@
 </div>
 </template>
 <script>
+// npm install --sava url-search-params
+// import URLSearchParams from 'url-search-params';
+// let batchAddAttributes = function(params) {
+//         if (params instanceof Object) {
+//             for (let key in params) {
+//                 this.delete(key);
+//                 this.append(key, params[key]);
+//             }
+//         }
+//     };
+// if(!window.URLSearchParams) {
+//     URLSearchParams.prototype.batchAddAttributes = batchAddAttributes;
+//     window.URLSearchParams = URLSearchParams;
+// }else {
+//     window.URLSearchParams.prototype.batchAddAttributes = batchAddAttributes;
+// }
+
 window.globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj || {};
 let globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj;
 // 任何全局变量在各文件中使用前，必须在此文件和globalYonyouCoordinationCliTopLevelObj进行初始化注册

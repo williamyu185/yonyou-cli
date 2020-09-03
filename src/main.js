@@ -28,19 +28,6 @@ import axios from './config/http.js';
 //     prefix: 'yymui'
 // });
 
-// npm install --sava url-search-params
-// import URLSearchParams from 'url-search-params';
-// if(!window.URLSearchParams) {
-//     window.URLSearchParams = URLSearchParams;
-//     URLSearchParams.prototype.add = function(params) {
-//         if (params instanceof Object) {
-//             for (let key in params) {
-//                 this.delete(key);
-//                 this.append(key, params[key]);
-//             }
-//         }
-//     };
-// }
 Vue.prototype.$http = axios;
 Vue.use(ElementUI, {
     locale: language.locale
