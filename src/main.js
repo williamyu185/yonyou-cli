@@ -1,6 +1,5 @@
 import './asset/css/reset.css';
 import Vue from 'vue';
-import axios from './config/http.js';
 import router from './router/index.js';
 import ElementUI from 'element-ui';
 import './asset/css/coordination-cli.less';
@@ -10,6 +9,7 @@ import entry from './view/index.vue';
 import language from './asset/libs/languages/index.js';
 import Vuex from 'vuex';
 import localStore from './store/index.js';
+import axios from './config/http.js';
 
 // 如需使用用友web端ui库yyzone进行开发,请将下列几行代码取消注释
 // api地址:https://imoss.yonyoucloud.com/suite/cooperation/develop/yyzone/index.html#/home
