@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 // webpack 4.0 中用来抽离css 的插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 // 针对 Lodash 按需打包
@@ -12,7 +12,7 @@ const nodeENV = process.env.NODE_ENV;
 const isDev = (nodeENV != 'prev' && nodeENV != 'production');
 const isLocalServeENV = (nodeENV == 'development');
 const uglify = require('uglifyjs-webpack-plugin');
-const copyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const projectPath = path.resolve(__dirname, '../');
@@ -106,22 +106,22 @@ module.exports = {
             name: 'manifest'
         },
         // 压缩js代码
-		// minimizer: [
-			// new uglify({
-			// 	test: /\.js$/i,
-			// 	// 在使用 uglifyjs-webpack-plugin 时，你必须提供 sourceMap：true 选项来devtool启用 source map 支持
-			// 	sourceMap: true,
-			// 	// 使用多进程并行运行来提高构建速度
-			// 	parallel: true,
-			// 	// UglifyJS 压缩选项
-			// 	uglifyOptions: {
-			// 		// 去掉debugger
-			// 		drop_debugger: true
-			// 	},
-			// 	//包含哪些文件
-			// 	include: [/\/node_modules/, /\/webpack/]
-			// })
-		// ],
+		minimizer: [
+			new uglify({
+				test: /\.js$/i,
+				// 在使用 uglifyjs-webpack-plugin 时，你必须提供 sourceMap：true 选项来devtool启用 source map 支持
+				sourceMap: true,
+				// 使用多进程并行运行来提高构建速度
+				parallel: true,
+				// UglifyJS 压缩选项
+				uglifyOptions: {
+					// 去掉debugger
+					drop_debugger: true
+				},
+				//包含哪些文件
+				include: [/\/src/]
+			})
+		],
 		splitChunks: {
 			cacheGroups: {
                 // 将多个css chunk合并成一个css文件  项目工程中自定义的公共样式及引入第三方组件的样式
@@ -249,7 +249,7 @@ module.exports = {
 		}),
 		//vue-loader插件
 		new VueLoaderPlugin(),
-		new htmlWebpackPlugin({
+		new HtmlWebpackPlugin({
 			hash: true,
 			minify: {
 				removeComments: true,
@@ -274,7 +274,7 @@ module.exports = {
 		//按需打包Lodash,各版本浏览器工具方法兼容
 		new LodashModuleReplacementPlugin(),
         //集中拷贝静态资源
-        new copyWebpackPlugin({
+        new CopyWebpackPlugin({
 			patterns: [{
 				//打包的静态资源目录地址
 				from: path.resolve(__dirname, '../src/config/configReplace.js'),
