@@ -104,7 +104,8 @@ module.exports = {
         //告诉 webpack 是否要把这部分单独打包出来.
         runtimeChunk: {
             name: 'manifest'
-        },
+		},
+		minimize: true,
         // 压缩js代码
 		minimizer: [
 			new TerserWebpackPlugin({
