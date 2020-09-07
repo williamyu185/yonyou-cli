@@ -11,7 +11,8 @@ const nodeModules = path.resolve(__dirname, '../node_modules');
 const nodeENV = process.env.NODE_ENV;
 const isDev = (nodeENV != 'prev' && nodeENV != 'production');
 const isLocalServeENV = (nodeENV == 'development');
-const uglify = require('uglifyjs-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -107,20 +108,12 @@ module.exports = {
         },
         // 压缩js代码
 		minimizer: [
-			new uglify({
-				test: /\.js$/i,
-				// 在使用 uglifyjs-webpack-plugin 时，你必须提供 sourceMap：true 选项来devtool启用 source map 支持
-				sourceMap: true,
-				// 使用多进程并行运行来提高构建速度
+			new TerserWebpackPlugin({
 				parallel: true,
-				// UglifyJS 压缩选项
-				uglifyOptions: {
-					// 去掉debugger
-					drop_debugger: true
-				},
-				//包含哪些文件
-				include: [sourceCodePath]
-			})
+				sourceMap: true,
+				terserOptions: {}
+			}),
+			new CssMinimizerPlugin()
 		],
 		splitChunks: {
 			cacheGroups: {
