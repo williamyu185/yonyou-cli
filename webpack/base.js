@@ -12,7 +12,6 @@ const nodeENV = process.env.NODE_ENV;
 const isDev = (nodeENV != 'prev' && nodeENV != 'production');
 const isLocalServeENV = (nodeENV == 'development');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -112,8 +111,7 @@ module.exports = {
 				parallel: true,
 				sourceMap: true,
 				terserOptions: {}
-			}),
-			new CssMinimizerPlugin()
+			})
 		],
 		splitChunks: {
 			cacheGroups: {
