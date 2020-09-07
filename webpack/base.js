@@ -119,7 +119,7 @@ module.exports = {
 					drop_debugger: true
 				},
 				//包含哪些文件
-				include: [/\/src/]
+				include: [sourceCodePath]
 			})
 		],
 		splitChunks: {
