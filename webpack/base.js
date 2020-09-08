@@ -234,7 +234,6 @@ module.exports = {
 		//不必通过 import/require 使用模块
 		// new webpack.ProvidePlugin({
 		// 	jQuery: 'jquery',
-		// 	$: 'jquery'
 		// }),
 		new webpack.DefinePlugin({
 			__ENV__: JSON.stringify(nodeENV),
