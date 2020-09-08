@@ -233,6 +233,7 @@ module.exports = {
         // new CleanWebpackPlugin(['dist']),
 		//不必通过 import/require 使用模块
 		// new webpack.ProvidePlugin({
+		// npm install --save jquery,也可直接使用$
 		// 	jQuery: 'jquery',
 		// }),
 		new webpack.DefinePlugin({
