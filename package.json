@@ -8,7 +8,7 @@
     "test": "npm run cleanAndInstall && cross-env NODE_ENV=test webpack --progress --config ./webpack/test.js",
     "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily webpack --progress --config ./webpack/daily.js",
     "prev": "npm run cleanAndInstall && cross-env NODE_ENV=prev webpack --progress --config ./webpack/prev.js",
-    "dist": "cross-env NODE_ENV=production webpack --progress --config ./webpack/build.js",
+    "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production webpack --progress --config ./webpack/build.js",
     "yonbip": "npm run cleanAndInstall && cross-env NODE_ENV=yonbip webpack --progress --config ./webpack/build.js",
     "smallProgramTest": "npm run cleanAndInstall && cross-env NODE_ENV=smallProgramTest webpack --progress --config ./webpack/test.js",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"

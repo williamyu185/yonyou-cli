@@ -111,7 +111,8 @@ module.exports = {
 			new TerserWebpackPlugin({
 				parallel: true,
 				sourceMap: true,
-				terserOptions: {}
+				terserOptions: {},
+				sourceMap: !isDev
 			})
 		],
 		splitChunks: {
