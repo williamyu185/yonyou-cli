@@ -9,7 +9,7 @@ const chalk = require('chalk');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const nodeModules = path.resolve(__dirname, '../node_modules');
 const nodeENV = process.env.NODE_ENV;
-const isDev = (nodeENV != 'prev' && nodeENV != 'production');
+const isDev = (nodeENV == 'development');
 const isLocalServeENV = (nodeENV == 'development');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
