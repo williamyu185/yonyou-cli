@@ -80,6 +80,8 @@ const postcssLoaderRules = {
 			sourceMap: true,
 			// 开启css-modules模式下的css-post功能
 			modules: true,
+			// 支持CSS-in-JS
+			execute: true,
 		}
 	}
 };
