@@ -69,16 +69,18 @@ const pxToViewportConfig = {
 const postcssLoaderRules = {
 	loader: 'postcss-loader',
 	options: {
-		plugins: [
-			// 自动补全css前缀
-			require('autoprefixer'),
-			// 如果需要开启px转vw插件功能,请取消注释此行代码
-			// pxToViewport(pxToViewportConfig)
-		],
-		// 开启sourceMap调试
-		sourceMap: true,
-		// 开启css-modules模式下的css-post功能
-		modules: true,
+		postcssOptions: {
+			plugins: [
+				// 自动补全css前缀
+				'postcss-preset-env',
+				// 如果需要开启px转vw插件功能,请取消注释此行代码
+				// pxToViewport(pxToViewportConfig)
+			],
+			// 开启sourceMap调试
+			sourceMap: true,
+			// 开启css-modules模式下的css-post功能
+			modules: true,
+		}
 	}
 };
 
