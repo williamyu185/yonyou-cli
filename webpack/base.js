@@ -76,13 +76,14 @@ const postcssLoaderRules = {
 				// 如果需要开启px转vw插件功能,请取消注释此行代码
 				// pxToViewport(pxToViewportConfig)
 			],
-			// 开启sourceMap调试
-			sourceMap: true,
+			// parser: 'postcss-js',
 			// 开启css-modules模式下的css-post功能
 			modules: true,
-			// 支持CSS-in-JS
-			execute: true,
-		}
+		},
+		// // 开启sourceMap调试
+		sourceMap: true,
+		// 支持CSS-in-JS
+		// execute: true,
 	}
 };
 
