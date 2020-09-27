@@ -37,7 +37,7 @@
             smallProgramTest: {
                 mainHost: ''
             },
-            yonbip: {
+            private: {
                 mainHost: ''
             }
         };

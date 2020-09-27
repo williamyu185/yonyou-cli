@@ -12,23 +12,6 @@ import Vuex from 'vuex';
 import localStore from './store/index.js';
 import axios from './config/http.js';
 
-// 如需使用用友web端ui库yyzone进行开发,请将下列几行代码取消注释
-// api地址:https://imoss.yonyoucloud.com/suite/cooperation/develop/yyzone/index.html#/home
-// import 'yyzone/dist/styles/yyzone.min.css';
-// import YYZone from 'yyzone/dist/yyzone.js';
-// Vue.use(YYZone, {
-//     locale: language.YYZoneLocale
-// });
-
-// 如需使用用友移动端ui库yy-mui进行开发,请将下列几行代码取消注释,默认命名空间为yymui,可自行更改
-// api地址:https://www.yuque.com/gbzke1/vpzlvk/gu2dga
-// import yyMui from 'yy-mui';
-// import 'yy-mui/lib/yy-mui.css';
-// Vue.use(yyMui, {
-//     locale: language.YYMuiLocale,
-//     prefix: 'yymui'
-// });
-
 Vue.prototype.$http = axios;
 // 如需使用element-ui,请将下列几行代码取消注释
 // Vue.use(ElementUI, {

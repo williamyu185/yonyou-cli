@@ -9,7 +9,7 @@
     "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily webpack --progress --config ./webpack/daily.js",
     "prev": "npm run cleanAndInstall && cross-env NODE_ENV=prev webpack --progress --config ./webpack/prev.js",
     "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production webpack --progress --config ./webpack/build.js",
-    "yonbip": "npm run cleanAndInstall && cross-env NODE_ENV=yonbip webpack --progress --config ./webpack/build.js",
+    "private": "npm run cleanAndInstall && cross-env NODE_ENV=private webpack --progress --config ./webpack/build.js",
     "smallProgramTest": "npm run cleanAndInstall && cross-env NODE_ENV=smallProgramTest webpack --progress --config ./webpack/test.js",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
   },
@@ -29,9 +29,7 @@
     "vue": "^2.6.11",
     "vue-i18n": "^8.21.1",
     "vue-router": "^3.1.4",
-    "vuex": "^3.1.2",
-    "yy-mui": "^1.0.47",
-    "yyzone": "^1.1.167"
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
