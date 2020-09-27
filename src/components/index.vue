@@ -47,12 +47,12 @@
 //     window.URLSearchParams.prototype.batchAddAttributes = batchAddAttributes;
 // }
 
-window.globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj || {};
-let globalYonyouCoordinationCliTopLevelObj = window.globalYonyouCoordinationCliTopLevelObj;
-// 任何全局变量在各文件中使用前，必须在此文件和globalYonyouCoordinationCliTopLevelObj进行初始化注册
-// 严禁在未在此文件和globalYonyouCoordinationCliTopLevelObj对象注册的情况下，在其他文件中直接初始化并使用全局变量
-globalYonyouCoordinationCliTopLevelObj = {
-    ...globalYonyouCoordinationCliTopLevelObj,
+window.globalUniquenessCoordinationCliTopLevelObj = window.globalUniquenessCoordinationCliTopLevelObj || {};
+let globalUniquenessCoordinationCliTopLevelObj = window.globalUniquenessCoordinationCliTopLevelObj;
+// 任何全局变量在各文件中使用前，必须在此文件和globalUniquenessCoordinationCliTopLevelObj进行初始化注册
+// 严禁在未在此文件和globalUniquenessCoordinationCliTopLevelObj对象注册的情况下，在其他文件中直接初始化并使用全局变量
+globalUniquenessCoordinationCliTopLevelObj = {
+    ...globalUniquenessCoordinationCliTopLevelObj,
     isSmallProgram: /smallProgram/ig.test(__ENV__)
 };
 

@@ -15,10 +15,10 @@
             throw new Error('cannot find the global object');
     };
     var globalObj = getGlobalObject();
-    globalObj.globalYonyouCoordinationCliTopLevelObj = globalObj.globalYonyouCoordinationCliTopLevelObj || {};
-    var globalYonyouCoordinationCliTopLevelObj = globalObj.globalYonyouCoordinationCliTopLevelObj;
-    if(!globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig) {
-        globalYonyouCoordinationCliTopLevelObj.separateYonbipHostFileConfig = {
+    globalObj.globalUniquenessCoordinationCliTopLevelObj = globalObj.globalUniquenessCoordinationCliTopLevelObj || {};
+    var globalUniquenessCoordinationCliTopLevelObj = globalObj.globalUniquenessCoordinationCliTopLevelObj;
+    if(!globalUniquenessCoordinationCliTopLevelObj.separateHostFileConfig) {
+        globalUniquenessCoordinationCliTopLevelObj.separateHostFileConfig = {
             development: {
                 mainHost: ''
             },
