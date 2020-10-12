@@ -36,7 +36,7 @@ let dist = ENVJson['dist'];
 if(shellMsg.isCopyOneOfENVToDist) {
   let copyENV = shellMsg.copyENV;
   child_process.execSync(`rm -rf ./${ENV_dist} ./dist && unzip ./${ENV_dist}.zip`);
-  child_process.exec(`cp -r ./${ENV_dist}/${copyENV}/. ./${dist}`, {}, function (error, stdout, stderr) {
+  child_process.exec(`cp -r ./${ENV_dist}/${copyENV}/. ${dist}`, {}, function (error, stdout, stderr) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }else {
@@ -64,6 +64,7 @@ if(shellMsg.isPublish) {
   }
   Promise.all(allPromise).then((resolve, reject) => {
     console.log(`All environments were packaged successfully!`);
+    child_process.execSync(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`)
   });
   return;
 }
