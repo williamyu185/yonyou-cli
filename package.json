@@ -1,6 +1,6 @@
 {
   "name": "coordination-cli",
-  "version": "2.0.67",
+  "version": "2.0.68",
   "description": "",
   "main": "./dist",
   "scripts": {
@@ -12,7 +12,7 @@
     "private": "node ./bin/index.js --copyOneOfENVToDist=private",
     "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
     "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
-    "publish": "npm run cleanAndInstall && node ./bin/index.js --env"
+    "publishAll": "npm run cleanAndInstall && node ./bin/index.js --env"
   },
   "bin": {
     "coordination-cli": "./bin/index.js"
