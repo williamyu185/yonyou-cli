@@ -17,7 +17,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const projectPath = path.resolve(__dirname, '../');
 const sourceCodePath = path.join(projectPath, '/src');
-const distExportPath = path.join(projectPath, './dist');
+const distExportPath = path.join(projectPath, './ENV_dist/' + nodeENV);
 const bundleTime = function() {
 	let date = new Date();
 	let year = date.getFullYear();
@@ -277,7 +277,7 @@ module.exports = {
 				//打包的静态资源目录地址
 				from: path.resolve(__dirname, '../src/config/configReplace.js'),
 				//打包到dist下面的public
-				to: '../dist/config.js'
+				to: distExportPath + '/config.js'
 			}]
 		}),
 	]

@@ -5,13 +5,14 @@
   "main": "./dist",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./webpack/dev.js --colors --progress",
-    "test": "npm run cleanAndInstall && cross-env NODE_ENV=test webpack --progress --config ./webpack/test.js",
-    "daily": "npm run cleanAndInstall && cross-env NODE_ENV=daily webpack --progress --config ./webpack/daily.js",
-    "prev": "npm run cleanAndInstall && cross-env NODE_ENV=prev webpack --progress --config ./webpack/prev.js",
-    "dist": "npm run cleanAndInstall && cross-env NODE_ENV=production webpack --progress --config ./webpack/build.js",
-    "private": "npm run cleanAndInstall && cross-env NODE_ENV=private webpack --progress --config ./webpack/build.js",
-    "smallProgramTest": "npm run cleanAndInstall && cross-env NODE_ENV=smallProgramTest webpack --progress --config ./webpack/test.js",
-    "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./dist"
+    "test": "node ./bin/index.js --copyOneOfENVToDist=test",
+    "daily": "node ./bin/index.js --copyOneOfENVToDist=daily",
+    "prev": "node ./bin/index.js --copyOneOfENVToDist=prev",
+    "dist": "node ./bin/index.js --copyOneOfENVToDist=production",
+    "private": "node ./bin/index.js --copyOneOfENVToDist=private",
+    "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
+    "cleanAndInstall": "rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
+    "publish": "npm run cleanAndInstall && node ./bin/index.js --env && zip -r ./ENV_dist.zip ./ENV_dist && rm -rf ./ENV_dist"
   },
   "bin": {
     "coordination-cli": "./bin/index.js"
