@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
+let fs = require('fs');
+let archiver = require('archiver');
 let ENVJson = require('../env.json');
 let argvs = process.argv.splice(2);
 let shellMsg = {
@@ -64,7 +66,17 @@ if(shellMsg.isPublish) {
   }
   Promise.all(allPromise).then((resolve, reject) => {
     console.log(`All environments were packaged successfully!`);
-    child_process.execSync(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`)
+    // child_process.execSync(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`)
+    let output = fs.createWriteStream(`${ENV_dist}.zip`);
+    let archive = archiver('zip', {
+      zlib: {level: 9}
+    });
+    archive.pipe(output);
+    archive.directory(`${ENV_dist}/`, false);
+    archive.finalize();
+    output.on('close', function() {
+      child_process.execSync(`rm -rf ./${ENV_dist}`);
+    });
   });
   return;
 }

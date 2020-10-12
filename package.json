@@ -11,7 +11,7 @@
     "dist": "node ./bin/index.js --copyOneOfENVToDist=production",
     "private": "node ./bin/index.js --copyOneOfENVToDist=private",
     "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
-    "cleanAndInstall": "rm -rf ./node_modules && npm install && rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
+    "cleanAndInstall": "rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
     "publishAll": "npm run cleanAndInstall && node ./bin/index.js --env"
   },
   "bin": {
@@ -37,6 +37,7 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/runtime": "^7.8.3",
+    "archiver": "^5.0.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
