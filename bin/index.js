@@ -59,7 +59,7 @@ if(shellMsg.isPublish) {
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
-      child_process.exec(`cross-env NODE_ENV=${ENVConfig['NODE_ENV'] || ENV} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, function (error, stdout, stderr) {
+      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${ENVConfig['NODE_ENV'] || ENV} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, function (error, stdout, stderr) {
         if (error !== null) {
           console.log('exec error: ' + error);
         }else {
