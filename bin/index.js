@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
-let fs = require('fs');
-let archiver = require('archiver');
+let AdmZip = require('adm-zip');
 let ENVJson = require('../env.json');
 let argvs = process.argv.splice(2);
 let shellMsg = {
@@ -9,12 +8,14 @@ let shellMsg = {
       isInstall: false,
       isPublish: false,
       isCopyOneOfENVToDist: false,
-      copyENV: ''
+      copyENV: '',
+      isCreatProject: false
     };
 let isDesiredShellParam = function(regStr, param) {
   let regExp = new RegExp(regStr, 'ig');
   return regExp.test(param);
 };
+!argvs.length && (shellMsg.isCreatProject = true);
 argvs.forEach((item, index) => {
   if(isDesiredShellParam('^-', item)) {
     if((item == '-i') || (item == '--install')) {
@@ -30,6 +31,7 @@ argvs.forEach((item, index) => {
   }else {
     if(index == 0) {
       shellMsg.projectName = item;
+      shellMsg.isCreatProject = true;
     }
   }
 });
@@ -37,8 +39,11 @@ let ENV_dist = ENVJson['ENV_dist'];
 let dist = ENVJson['dist'];
 if(shellMsg.isCopyOneOfENVToDist) {
   let copyENV = shellMsg.copyENV;
-  child_process.execSync(`rm -rf ./${ENV_dist} ./dist && unzip ./${ENV_dist}.zip`);
-  child_process.exec(`cp -r ./${ENV_dist}/${copyENV}/. ${dist}`, {}, function (error, stdout, stderr) {
+  // child_process.execSync(`rm -rf ./${ENV_dist} ./dist && unzip ./${ENV_dist}.zip`);
+  child_process.execSync(`rm -rf ./${ENV_dist} ./dist`);
+  let unzip = new AdmZip(`${ENV_dist}.zip`);
+  unzip.extractAllTo(`${ENV_dist}`, true);
+  child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, function (error, stdout, stderr) {
     if (error !== null) {
       console.log('exec error: ' + error);
     }else {
@@ -67,17 +72,14 @@ if(shellMsg.isPublish) {
   Promise.all(allPromise).then((resolve, reject) => {
     console.log(`All environments were packaged successfully!`);
     // child_process.execSync(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`)
-    let output = fs.createWriteStream(`${ENV_dist}.zip`);
-    let archive = archiver('zip', {
-      zlib: {level: 9}
-    });
-    archive.pipe(output);
-    archive.directory(`${ENV_dist}/`, false);
-    archive.finalize();
-    output.on('close', function() {
-      child_process.execSync(`rm -rf ./${ENV_dist}`);
-    });
+    let zip = new AdmZip();
+    zip.addLocalFolder(`${ENV_dist}`);
+    zip.writeZip(`${ENV_dist}.zip`);
+    child_process.execSync(`rm -rf ./${ENV_dist}`);
   });
+  return;
+}
+if(!shellMsg.isCreatProject) {
   return;
 }
 let afterClone = 'cd ./' + shellMsg.projectName + ' && rm -rf .git && cd ../';
