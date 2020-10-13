@@ -11,8 +11,9 @@
     "dist": "node ./bin/index.js --copyOneOfENVToDist=production",
     "private": "node ./bin/index.js --copyOneOfENVToDist=private",
     "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
-    "cleanAndInstall": "rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
-    "publishAll": "npm run cleanAndInstall && node ./bin/index.js --env"
+    "cleanAndInstall": "rm -rf ./node_modules && npm install",
+    "cleanDist": "rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
+    "publishAll": "npm run cleanAndInstall && npm run cleanDist && node ./bin/index.js --env"
   },
   "bin": {
     "coordination-cli": "./bin/index.js"
