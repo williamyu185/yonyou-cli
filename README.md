@@ -28,9 +28,9 @@
             "webpackFile": "build"
         }
     },
-    // 将各环境打出来的输出包放入到此目录下，并对此目录做zip压缩
+    // 将bale字段配置的各环境打出来的输出包放入到此目录下，并对此目录做zip压缩
     "ENV_dist": "ENV_dist",
-    // 例如执行npm run daily时，解压zip压缩包，并根据shell执行语句的--copyOneOfENVToDist=daily配置项，从解压的目录中把daily目录下的所有文件复制到dist文件目录下
+    // 例如执行npm run daily时，解压ENV_dist.zip压缩包后，将根据shell执行语句中的--copyOneOfENVToDist=daily配置项，从ENV_dist解压目录中，把daily目录下的所有文件复制到dist文件目录下
     "dist": "./dist"
 }
 ```
