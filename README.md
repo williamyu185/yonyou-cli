@@ -6,7 +6,35 @@
 #### 3.2）第一个参数如果不以 - 符开头，将认为是即将创建项目的项目名，否则将采用coordination-cli作为默认项目名。
 #### 3.3）选项：
 ##### 3.3.1）-i，--install：创建完项目后将执行npm install为该项目安装node_modules包。
+##### 3.3.1）--env：将env.json中bale字段配置的所有环境打包到一个zip压缩包中(npm run publishAll在本机环境中把env.json配置的各环境打包到本地，防止在运维环境或其他环境由于node版本等原因导致打包过程中发生各种异常)。
 #### 3.4）如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包。
+#### 3.5）env.json各配置项解释：
+```
+{
+    // 配置需要打包的各环境
+    "bale": {
+        // 等价执行npm run test
+        "test": {},
+        "daily": {},
+        "smallProgramTest": {
+            // 寻找webpack目录下的配置文件，等价执行webpack --progress --config ./webpack/test.js
+            "webpackFile": "test",
+            // 如webpackFile、NODE_ENV如法满足需求，配置此字段将执行自定义shell执行语句。
+            "execShell": ""
+        },
+        "dist": {
+            // 环境变量，等价执行cross-env NODE_ENV=production
+            "NODE_ENV": "production",
+            "webpackFile": "build"
+        }
+    },
+    // 将各环境打出来的输出包放入到此目录下，并对此目录做zip压缩
+    "ENV_dist": "ENV_dist",
+    // 例如执行npm run daily时，解压zip压缩包，并根据shell执行语句的--copyOneOfENVToDist=daily配置项，从解压的目录中把daily目录下的所有文件复制到dist文件目录下
+    "dist": "./dist"
+}
+```
+#### 3.6）--copyOneOfENVToDist：一般运维服务器执行此配置项对应的脚本执行语句(例如npm run daily)，从解压的目录中把daily目录下的所有文件复制到dist文件目录下
 # 二、相关规范与配置项解读
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalUniquenessCoordinationCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalUniquenessCoordinationCliTopLevelObj对象下。

@@ -5,12 +5,12 @@
   "main": "./dist",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./webpack/dev.js --colors --progress",
-    "test": "node ./bin/index.js --copyOneOfENVToDist=test",
-    "daily": "node ./bin/index.js --copyOneOfENVToDist=daily",
-    "prev": "node ./bin/index.js --copyOneOfENVToDist=prev",
-    "dist": "node ./bin/index.js --copyOneOfENVToDist=production",
-    "private": "node ./bin/index.js --copyOneOfENVToDist=private",
-    "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
+    "test": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=test",
+    "daily": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=daily",
+    "prev": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=prev",
+    "dist": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=production",
+    "private": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=private",
+    "smallProgramTest": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
     "cleanAndInstall": "rm -rf ./node_modules && npm install",
     "cleanDist": "rm -rf ./ENV_dist ./ENV_dist.zip ./dist",
     "publishAll": "npm run cleanAndInstall && npm run cleanDist && node ./bin/index.js --env"
