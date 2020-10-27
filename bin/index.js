@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
 let AdmZip = require('adm-zip');
-let ENVJson = require('../env.json');
+let ENVJson = require('../env.js');
 let argvs = process.argv.splice(2);
 let shellMsg = {
       projectName: 'coordination-cli',

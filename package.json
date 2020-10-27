@@ -16,7 +16,7 @@
     "publishAll": "npm run cleanAndInstall && npm run cleanDist && node ./bin/index.js --env"
   },
   "bin": {
-    "coordination-cli": "./bin/index.js"
+    "coordination-cli": "bin/index.js"
   },
   "repository": {
     "type": "git",
