@@ -13,4 +13,4 @@ module.exports = {
     },
     ENV_dist: 'ENV_dist',
     dist: './dist'
-}
+};
