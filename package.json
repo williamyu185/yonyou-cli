@@ -1,8 +1,11 @@
 {
   "name": "coordination-cli",
-  "version": "2.0.74",
+  "version": "2.0.75",
   "description": "",
   "main": "./dist",
+  "files": [
+    "./package-lock.json"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./webpack/dev.js --colors --progress",
     "test": "npm run cleanAndInstall && node ./bin/index.js --copyOneOfENVToDist=test",
