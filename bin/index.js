@@ -38,12 +38,12 @@ let ENV_dist = ENVJson['ENV_dist'];
 let dist = ENVJson['dist'];
 if(shellMsg.isCopyOneOfENVToDist) {
   let unzip_ENV_dist = () => {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
       child_process.execSync(`rm -rf ./${ENV_dist} ./dist && unzip ./${ENV_dist}.zip`, (error, stdout, stderr) => {
         if (error !== null) {
           reject(error);
         }else {
-          reslove(null);
+          resolve(null);
         }
       });
     });
@@ -84,21 +84,40 @@ if(shellMsg.isPublish) {
       child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${ENVConfig['NODE_ENV'] || ENV} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log('exec error: ' + error);
+          reject(error)
         }else {
           console.log(`NODE_ENV ${ENV} created successfully!`);
-          resolve();
+          resolve(null);
         }
       });
     }));
   }
-  Promise.all(allPromise).then((resolve, reject) => {
+  Promise.all(allPromise).then((arr) => {
     console.log(`All environments were packaged successfully!`);
-    // child_process.execSync(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`)
+    // new Promise((resolve, reject) => {
+    //   child_process.exec(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`, (error, stdout, stderr) => {
+    //     if (error !== null) {
+    //       reject(error);
+    //     }else {
+    //       resolve(null);
+    //     }
+    //   });
+    // }).then(() => {
+    //   child_process.exec(`rm -rf ./${ENV_dist}`);
+    // }, () => {
+    //   let zip = new AdmZip();
+    //   zip.addLocalFolder(`${ENV_dist}`);
+    //   zip.writeZip(`${ENV_dist}.zip`);
+    //   child_process.exec(`rm -rf ./${ENV_dist}`);
+    // });
+    let AdmZip = require('adm-zip');
     let zip = new AdmZip();
     zip.addLocalFolder(`${ENV_dist}`);
     zip.writeZip(`${ENV_dist}.zip`);
-    child_process.execSync(`rm -rf ./${ENV_dist}`);
-  });
+    child_process.exec(`rm -rf ./${ENV_dist}`);
+  }).catch((error) => {
+    console.log('dist package failed');
+  });;
   return;
 }
 if(!shellMsg.isCreatProject) {
