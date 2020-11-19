@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
-let AdmZip = require('adm-zip');
 let ENVJson = require('../env.js');
 let argvs = process.argv.splice(2);
 let shellMsg = {
@@ -11,7 +10,7 @@ let shellMsg = {
       copyENV: '',
       isCreatProject: false
     };
-let isDesiredShellParam = function(regStr, param) {
+let isDesiredShellParam = (regStr, param) => {
   let regExp = new RegExp(regStr, 'ig');
   return regExp.test(param);
 };
@@ -38,18 +37,41 @@ argvs.forEach((item, index) => {
 let ENV_dist = ENVJson['ENV_dist'];
 let dist = ENVJson['dist'];
 if(shellMsg.isCopyOneOfENVToDist) {
-  let copyENV = shellMsg.copyENV;
-  // child_process.execSync(`rm -rf ./${ENV_dist} ./dist && unzip ./${ENV_dist}.zip`);
-  child_process.execSync(`rm -rf ./${ENV_dist} ./dist`);
-  let unzip = new AdmZip(`${ENV_dist}.zip`);
-  unzip.extractAllTo(`${ENV_dist}`, true);
-  child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, function (error, stdout, stderr) {
-    if (error !== null) {
-      console.log('exec error: ' + error);
+  let unzip_ENV_dist = () => {
+    return new Promise((reslove, reject) => {
+      child_process.execSync(`rm -rf ./${ENV_dist} ./dist && unzip ./${ENV_dist}.zip`, (error, stdout, stderr) => {
+        if (error !== null) {
+          reject(error);
+        }else {
+          reslove(null);
+        }
+      });
+    });
+  };
+  let compatibleSolutions = async () => {
+    let error = await unzip_ENV_dist();
+    if(error !== null) {
+      return Promise.reject(error);
     }else {
-      console.log(`copy ${copyENV} successfully!`);
-      child_process.exec(`rm -rf ./${ENV_dist}`);
+      return Promise.resolve(null);
     }
+  };
+  compatibleSolutions().then((error) => {
+    if(error !== null) {
+      child_process.execSync(`npm run cleanAndInstall && rm -rf ./${ENV_dist} ./dist`);
+      let AdmZip = require('adm-zip');
+      let copyENV = shellMsg.copyENV;
+      let unzip = new AdmZip(`${ENV_dist}.zip`);
+      unzip.extractAllTo(`${ENV_dist}`, true);
+    }
+    child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, (error, stdout, stderr) => {
+      if(error !== null) {
+        console.log('exec error: ' + error);
+      }else {
+        console.log(`copy ${copyENV} successfully!`);
+        child_process.exec(`rm -rf ./${ENV_dist}`);
+      }
+    });
   });
   return;
 }
@@ -59,7 +81,7 @@ if(shellMsg.isPublish) {
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
-      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${ENVConfig['NODE_ENV'] || ENV} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, function (error, stdout, stderr) {
+      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${ENVConfig['NODE_ENV'] || ENV} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log('exec error: ' + error);
         }else {
@@ -88,11 +110,11 @@ if(shellMsg.isInstall) {
 }
 console.log('如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包')
 console.log('下载地址：https://github.com/williamyu185/yonyou-cli')
-child_process.exec('git clone https://github.com/williamyu185/yonyou-cli.git ' + shellMsg.projectName, {}, function (error, stdout, stderr) {
+child_process.exec('git clone https://github.com/williamyu185/yonyou-cli.git ' + shellMsg.projectName, {}, (error, stdout, stderr) => {
     if (error !== null) {
       console.log('exec error: ' + error);
     }else {
-      child_process.exec(afterClone, {}, function (error, stdout, stderr) {
+      child_process.exec(afterClone, {}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log('exec error: ' + error);
         }else {
