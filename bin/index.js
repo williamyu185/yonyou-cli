@@ -34,8 +34,10 @@ argvs.forEach((item, index) => {
     }
   }
 });
-let ENV_dist = ENVJson['ENV_dist'];
-let dist = ENVJson['dist'];
+let ENV_dist = ENVJson['ENV_dist'] || 'ENV_dist';
+let dist = ENVJson['dist'] || './dist';
+let cleanAndInstall = ENVJson['cleanAndInstall'] || `rm -rf ./node_modules && npm install`;
+let cleanDist = ENVJson['cleanDist'] || `rm -rf ./${ENV_dist} ./${ENV_dist}.zip ${dist}`;
 if(shellMsg.isCopyOneOfENVToDist) {
   let unzip_ENV_dist = () => {
     return new Promise((resolve, reject) => {
@@ -60,7 +62,7 @@ if(shellMsg.isCopyOneOfENVToDist) {
   compatibleSolutions().then((error) => {
     let copyENV = shellMsg.copyENV;
     if(error !== null) {
-      child_process.execSync(`npm run cleanAndInstall && rm -rf ./${ENV_dist} ${dist}`);
+      child_process.execSync(`${cleanAndInstall} && rm -rf ./${ENV_dist} ${dist}`);
       let AdmZip = require('adm-zip');
       let unzip = new AdmZip(`${ENV_dist}.zip`);
       unzip.extractAllTo(`${ENV_dist}`, true);
@@ -77,8 +79,15 @@ if(shellMsg.isCopyOneOfENVToDist) {
   return;
 }
 if(shellMsg.isPublish) {
+  let publishAllExecShell = ENVJson.publishAllExecShell;
+  if(publishAllExecShell) {
+    child_process.execSync(`${publishAllExecShell}`);
+    return;
+  }
   let bale = ENVJson.bale;
   let allPromise = [];
+  console.log('Please wait!');
+  child_process.execSync(`${cleanAndInstall} && ${cleanDist}`);
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
