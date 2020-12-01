@@ -40,7 +40,7 @@ if(shellMsg.isCopyOneOfENVToDist) {
   let unzip_ENV_dist = () => {
     return new Promise((resolve, reject) => {
       child_process.execSync(`rm -rf ./${ENV_dist} ${dist}`);
-      child_process.exec(`unzip -o ./${ENV_dist}.zip -d ${ENV_dist}`, (error, stdout, stderr) => {
+      child_process.exec(`unzip -o ./${ENV_dist}.zip -d ./${ENV_dist}`, (error, stdout, stderr) => {
         if (error !== null) {
           resolve(error);
         }else {
