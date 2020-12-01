@@ -24,8 +24,8 @@ module.exports = {
     dist: './dist',
     // 执行npm run publishAll时，如配置该字段，将优先执行该字段的自定义shell语句，package.json文件scripts字段下publishAll的shell语句将不执行
     publishAllExecShell: '',
-    // 默认值rm -rf ./node_modules && npm install
+    // shell语句。默认值rm -rf ./node_modules && npm install
     cleanAndInstall: '',
-    // 默认值rm -rf ./ENV_dist ./ENV_dist.zip ./dist
+    // shell语句。默认值rm -rf ./ENV_dist ./ENV_dist.zip ./dist
     cleanDist: ''
 };
