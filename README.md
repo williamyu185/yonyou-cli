@@ -29,9 +29,17 @@
         }
     },
     // 将bale字段配置的各环境打出来的输出包放入到此目录下，并对此目录做zip压缩，只限文件夹名称，不能加类似./等的文件路径符号
+    // 默认值为ENV_dist
     ENV_dist: 'ENV_dist',
     // 例如执行npm run daily时，解压ENV_dist.zip压缩包后，将根据shell执行语句中的--copyOneOfENVToDist=daily配置项，从ENV_dist解压目录中，把daily目录下的所有文件复制到此配置文件目录下
-    dist: './dist'
+    // 默认值为./dist
+    dist: './dist',
+    // 执行npm run publishAll时，如配置该字段，将优先执行该字段的自定义shell语句，package.json文件scripts字段下publishAll的shell语句将不执行
+    publishAllExecShell: '',
+    // shell语句。默认值rm -rf ./node_modules && npm install
+    cleanAndInstall: '',
+    // shell语句。默认值rm -rf ./ENV_dist ./ENV_dist.zip ./dist
+    cleanDist: ''
 }
 ```
 #### 3.6）--copyOneOfENVToDist：一般运维服务器执行此配置项对应的脚本执行语句(例如npm run daily)，从解压的目录中把daily目录下的所有文件复制到dist文件目录下
