@@ -13,7 +13,7 @@
 {
     // 配置需要打包的各环境
     bale: {
-        // 等价执行npm run test
+        // bale对象下的各key值，等价执行npm run test
         test: {},
         daily: {},
         smallProgramTest: {
