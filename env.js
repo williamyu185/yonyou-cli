@@ -5,13 +5,13 @@ module.exports = {
         test: {},
         daily: {},
         smallProgramTest: {
-            // 寻找webpack目录下的配置文件，等价执行webpack --progress --config ./webpack/test.js
+            // 寻找webpack目录下的配置文件，等价执行webpack --progress --config ./webpack/test.js。默认值为bale对象下对应的key值
             webpackFile: 'test',
-            // 如webpackFile、NODE_ENV等配置项无法满足实际业务需求，配置此字段将优先执行该配置项自定义shell语句，其他配置项将无效。
+            // 如webpackFile、NODE_ENV等配置项无法满足实际业务需求，配置此字段将优先执行该配置项自定义shell语句，其他配置项将无效
             execShell: ''
         },
         dist: {
-            // 环境变量，等价执行cross-env NODE_ENV=production
+            // 环境变量，等价执行cross-env NODE_ENV=production。默认值为bale对象下对应的key值
             NODE_ENV: 'production',
             webpackFile: 'build'
         }

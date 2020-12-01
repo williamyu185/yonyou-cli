@@ -82,12 +82,13 @@ if(shellMsg.isPublish) {
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
-      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${ENVConfig['NODE_ENV'] || ENV} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
+      let crossEnv = ENVConfig['NODE_ENV'] || ENV;
+      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log('exec error: ' + error);
           reject(error)
         }else {
-          console.log(`NODE_ENV ${ENV} created successfully!`);
+          console.log(`NODE_ENV ${crossEnv} created successfully!`);
           resolve(null);
         }
       });
