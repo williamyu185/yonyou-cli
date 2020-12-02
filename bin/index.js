@@ -142,13 +142,13 @@ if(shellMsg.isInstall) {
 }
 console.log('如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包')
 console.log('下载地址：https://github.com/williamyu185/yonyou-cli')
-child_process.exec('git clone https://github.com/williamyu185/yonyou-cli.git ' + shellMsg.projectName, {}, (error, stdout, stderr) => {
+child_process.exec(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {}, (error, stdout, stderr) => {
     if (error !== null) {
-      console.log('exec error: ' + error);
+      console.log(`exec error: ${error}`);
     }else {
       child_process.exec(afterClone, {}, (error, stdout, stderr) => {
         if (error !== null) {
-          console.log('exec error: ' + error);
+          console.log(`exec error: ${error}`);
         }else {
           console.log('Project created successfully!');
         }
