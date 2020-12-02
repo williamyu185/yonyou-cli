@@ -94,7 +94,7 @@ if(shellMsg.isPublish) {
       let crossEnv = ENVConfig['NODE_ENV'] || ENV;
       child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
         if (error !== null) {
-          console.log('exec error: ' + error);
+          console.log(`exec error: ${error}`);
           reject(error)
         }else {
           console.log(`NODE_ENV ${crossEnv} created successfully!`);
