@@ -98,7 +98,7 @@ if(shellMsg.isPublish) {
           reject(error)
         }else {
           console.log(`${stdout}`);
-          console.log(`NODE_ENV ${crossEnv} created successfully!`);
+          console.log(`\x1B[31mNODE_ENV ${crossEnv} created successfully!\x1B[0m`);
           console.log(`\r\n\-----------------------------\r\n\r\n\r\n\r\n`)
           resolve(null);
         }
