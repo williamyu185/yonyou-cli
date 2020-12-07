@@ -41,8 +41,8 @@ let cleanDist = ENVJson['cleanDist'] || `rm -rf ./${ENV_dist} ./${ENV_dist}.zip 
 if(shellMsg.isCopyOneOfENVToDist) {
   let unzip_ENV_dist = () => {
     return new Promise((resolve, reject) => {
-      child_process.execSync(`rm -rf ./${ENV_dist} ${dist}`);
-      child_process.exec(`unzip -o ./${ENV_dist}.zip -d ./${ENV_dist}`, (error, stdout, stderr) => {
+      child_process.execSync(`rm -rf ./${ENV_dist} ${dist}`, {stdio: 'inherit'});
+      child_process.exec(`unzip -o ./${ENV_dist}.zip -d ./${ENV_dist}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
         if (error !== null) {
           resolve(error);
         }else {
@@ -62,17 +62,17 @@ if(shellMsg.isCopyOneOfENVToDist) {
   compatibleSolutions().then((error) => {
     let copyENV = shellMsg.copyENV;
     if(error !== null) {
-      child_process.execSync(`${cleanAndInstall} && rm -rf ./${ENV_dist} ${dist}`);
+      child_process.execSync(`${cleanAndInstall} && rm -rf ./${ENV_dist} ${dist}`, {stdio: 'inherit'});
       let AdmZip = require('adm-zip');
       let unzip = new AdmZip(`${ENV_dist}.zip`);
       unzip.extractAllTo(`${ENV_dist}`, true);
     }
-    child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, (error, stdout, stderr) => {
+    child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
       if(error !== null) {
         console.log('exec error: ' + error);
       }else {
         console.log(`copy ${copyENV} successfully!`);
-        child_process.exec(`rm -rf ./${ENV_dist}`);
+        child_process.exec(`rm -rf ./${ENV_dist}`, {stdio: 'inherit'});
       }
     });
   });
@@ -81,18 +81,18 @@ if(shellMsg.isCopyOneOfENVToDist) {
 if(shellMsg.isPublish) {
   let publishAllExecShell = ENVJson.publishAllExecShell;
   if(publishAllExecShell) {
-    child_process.execSync(`${publishAllExecShell}`);
+    child_process.execSync(`${publishAllExecShell}`, {stdio: 'inherit'});
     return;
   }
   let bale = ENVJson.bale;
   let allPromise = [];
   console.log('Please wait!');
-  child_process.execSync(`${cleanAndInstall} && ${cleanDist}`);
+  child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
       let crossEnv = ENVConfig['NODE_ENV'] || ENV;
-      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
+      child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {stdio: 'inherit'}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log(`exec error: ${error}`);
           reject(error)
@@ -106,7 +106,7 @@ if(shellMsg.isPublish) {
   Promise.all(allPromise).then((arr) => {
     console.log(`All environments were packaged successfully!`);
     // new Promise((resolve, reject) => {
-    //   child_process.exec(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`, (error, stdout, stderr) => {
+    //   child_process.exec(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
     //     if (error !== null) {
     //       reject(error);
     //     }else {
@@ -114,18 +114,18 @@ if(shellMsg.isPublish) {
     //     }
     //   });
     // }).then(() => {
-    //   child_process.exec(`rm -rf ./${ENV_dist}`);
+    //   child_process.exec(`rm -rf ./${ENV_dist}`, {stdio: 'inherit'});
     // }, () => {
     //   let zip = new AdmZip();
     //   zip.addLocalFolder(`${ENV_dist}`);
     //   zip.writeZip(`${ENV_dist}.zip`);
-    //   child_process.exec(`rm -rf ./${ENV_dist}`);
+    //   child_process.exec(`rm -rf ./${ENV_dist}`, {stdio: 'inherit'});
     // });
     let AdmZip = require('adm-zip');
     let zip = new AdmZip();
     zip.addLocalFolder(`${ENV_dist}`);
     zip.writeZip(`${ENV_dist}.zip`);
-    child_process.exec(`rm -rf ./${ENV_dist}`);
+    child_process.exec(`rm -rf ./${ENV_dist}`, {stdio: 'inherit'});
   }).catch((error) => {
     console.log('dist package failed');
   });;
@@ -142,11 +142,11 @@ if(shellMsg.isInstall) {
 }
 console.log('如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包')
 console.log('下载地址：https://github.com/williamyu185/yonyou-cli')
-child_process.exec(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {}, (error, stdout, stderr) => {
+child_process.exec(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
     if (error !== null) {
       console.log(`exec error: ${error}`);
     }else {
-      child_process.exec(afterClone, {}, (error, stdout, stderr) => {
+      child_process.exec(afterClone, {stdio: 'inherit'}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log(`exec error: ${error}`);
         }else {
