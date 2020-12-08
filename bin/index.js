@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 let child_process = require('child_process');
 let ENVJson = require('../env.js');
+let {colorLog} = require('./console.js');
 let argvs = process.argv.splice(2);
 let shellMsg = {
       projectName: 'coordination-cli',
@@ -69,9 +70,9 @@ if(shellMsg.isCopyOneOfENVToDist) {
     }
     child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, (error, stdout, stderr) => {
       if(error !== null) {
-        console.log('exec error: ' + error);
+        console.log(`exec error: ${error}`);
       }else {
-        console.log(`copy ${copyENV} successfully!`);
+        colorLog(`copy ${copyENV} successfully!`);
         child_process.exec(`rm -rf ./${ENV_dist}`, {});
       }
     });
@@ -98,7 +99,7 @@ if(shellMsg.isPublish) {
           reject(error)
         }else {
           console.log(`${stdout}`);
-          console.log(`\x1B[31mNODE_ENV ${crossEnv} created successfully!\x1B[0m`);
+          colorLog(`NODE_ENV ${crossEnv} created successfully!`);
           console.log(`\r\n\-----------------------------\r\n\r\n\r\n\r\n`)
           resolve(null);
         }
@@ -106,7 +107,7 @@ if(shellMsg.isPublish) {
     }));
   }
   Promise.all(allPromise).then((arr) => {
-    console.log(`All environments were packaged successfully!`);
+    colorLog(`All environments were packaged successfully!`);
     // new Promise((resolve, reject) => {
     //   child_process.exec(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`, {}, (error, stdout, stderr) => {
     //     if (error !== null) {
@@ -129,7 +130,7 @@ if(shellMsg.isPublish) {
     zip.writeZip(`${ENV_dist}.zip`);
     child_process.exec(`rm -rf ./${ENV_dist}`, {});
   }).catch((error) => {
-    console.log('dist package failed');
+    colorLog(`dist package failed!`);
   });;
   return;
 }
@@ -142,8 +143,8 @@ if(shellMsg.isInstall) {
 }else {
   afterClone += ` && cd ../`;
 }
-console.log('If the project is not created for a long time due to network reasons, please download the source zip package directly');
-console.log('Download address: https://github.com/williamyu185/yonyou-cli');
+colorLog('If the project is not created for a long time due to network reasons, please download the source zip package directly');
+colorLog('Download address: https://github.com/williamyu185/yonyou-cli');
 let cloneProjectError = null;
 child_process.execSync(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
     if (error !== null) {
@@ -158,6 +159,6 @@ child_process.exec(afterClone, {}, (error, stdout, stderr) => {
   if (error !== null) {
     console.log(`exec error: ${error}`);
   }else {
-    console.log('Project created successfully!');
+    colorLog(`Project created successfully!`);
   }
 });
