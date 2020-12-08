@@ -100,7 +100,7 @@ if(shellMsg.isPublish) {
         }else {
           console.log(`${stdout}`);
           colorLog(`NODE_ENV ${crossEnv} created successfully!`);
-          console.log(`\r\n\-----------------------------\r\n\r\n\r\n\r\n`)
+          console.log(`\r\n-----------------------------\r\n\r\n\r\n\r\n`)
           resolve(null);
         }
       });
