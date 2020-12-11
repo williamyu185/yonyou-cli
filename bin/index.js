@@ -88,7 +88,7 @@ if(shellMsg.isPublish) {
   let bale = ENVJson.bale;
   let allPromise = [];
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
-  console.log(`\r\n========================\r\n\r\n\r\n\r\n`)
+  console.log(`\r\n========================\r\n\r\n\r\n\r\n`);
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
@@ -100,7 +100,7 @@ if(shellMsg.isPublish) {
         }else {
           console.log(`${stdout}`);
           colorLog(`NODE_ENV ${crossEnv} created successfully!`);
-          console.log(`\r\n-----------------------------\r\n\r\n\r\n\r\n`)
+          console.log(`\r\n-----------------------------\r\n\r\n\r\n\r\n`);
           resolve(null);
         }
       });
