@@ -71,12 +71,11 @@ if(shellMsg.isCopyOneOfENVToDist) {
     }
     child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, (error, stdout, stderr) => {
       if(error !== null) {
-        child_process.execSync(`${clean__ENV_dist__Dist}`, {stdio: 'inherit'});
         console.log(`${error}`);
       }else {
         colorLog(`copy ${copyENV} successfully!`);
-        child_process.exec(`rm -rf ./${ENV_dist}`, {});
       }
+      child_process.exec(`rm -rf ./${ENV_dist}`, {});
     });
   });
   return;
