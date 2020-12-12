@@ -6,7 +6,7 @@ let argvs = process.argv.splice(2);
 let shellMsg = {
       projectName: 'coordination-cli',
       isInstall: false,
-      isPublish: false,
+      isPublishAll: false,
       isCopyOneOfENVToDist: false,
       copyENV: '',
       isCreatProject: false
@@ -21,10 +21,10 @@ argvs.forEach((item, index) => {
     if((item == '-i') || (item == '--install')) {
       shellMsg.isInstall = true;
     }
-    if(item.indexOf('--env') !== -1) {
-      shellMsg.isPublish = true;
+    if(isDesiredShellParam('^--publishAll', item)) {
+      shellMsg.isPublishAll = true;
     }
-    if(item.indexOf('--copyOneOfENVToDist') !== -1) {
+    if(isDesiredShellParam('^--copyOneOfENVToDist=.+', item)) {
       shellMsg.isCopyOneOfENVToDist = true;
       shellMsg.copyENV = item.split('=')[1];
     }
@@ -79,7 +79,7 @@ if(shellMsg.isCopyOneOfENVToDist) {
   });
   return;
 }
-if(shellMsg.isPublish) {
+if(shellMsg.isPublishAll) {
   let publishAllExecShell = ENVJson.publishAllExecShell;
   if(publishAllExecShell) {
     child_process.execSync(`${publishAllExecShell}`, {stdio: 'inherit'});
