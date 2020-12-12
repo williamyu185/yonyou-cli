@@ -88,7 +88,7 @@ if(shellMsg.isPublish) {
   let bale = ENVJson.bale;
   let allPromise = [];
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
-  colorLog(`\r\n============   The environment is being packed,please wait!   ============\r\n\r\n\r\n\r\n`, `cyan`);
+  colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`, `cyan`);
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
