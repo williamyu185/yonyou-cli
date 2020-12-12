@@ -39,10 +39,11 @@ let ENV_dist = ENVJson['ENV_dist'] || 'ENV_dist';
 let dist = ENVJson['dist'] || './dist';
 let cleanAndInstall = ENVJson['cleanAndInstall'] || `rm -rf ./node_modules && npm install`;
 let cleanDist = ENVJson['cleanDist'] || `rm -rf ./${ENV_dist} ./${ENV_dist}.zip ${dist}`;
+let clean__ENV_dist__Dist = `rm -rf ./${ENV_dist} ${dist}`;
 if(shellMsg.isCopyOneOfENVToDist) {
   let unzip_ENV_dist = () => {
     return new Promise((resolve, reject) => {
-      child_process.execSync(`rm -rf ./${ENV_dist} ${dist}`, {stdio: 'inherit'});
+      child_process.execSync(`${clean__ENV_dist__Dist}`, {stdio: 'inherit'});
       child_process.exec(`unzip -o ./${ENV_dist}.zip -d ./${ENV_dist}`, {}, (error, stdout, stderr) => {
         if (error !== null) {
           resolve(error);
@@ -63,13 +64,14 @@ if(shellMsg.isCopyOneOfENVToDist) {
   compatibleSolutions().then((error) => {
     let copyENV = shellMsg.copyENV;
     if(error !== null) {
-      child_process.execSync(`${cleanAndInstall} && rm -rf ./${ENV_dist} ${dist}`, {stdio: 'inherit'});
+      child_process.execSync(`${cleanAndInstall} && ${clean__ENV_dist__Dist}`, {stdio: 'inherit'});
       let AdmZip = require('adm-zip');
       let unzip = new AdmZip(`${ENV_dist}.zip`);
       unzip.extractAllTo(`${ENV_dist}`, true);
     }
     child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, (error, stdout, stderr) => {
       if(error !== null) {
+        child_process.execSync(`${clean__ENV_dist__Dist}`, {stdio: 'inherit'});
         console.log(`${error}`);
       }else {
         colorLog(`copy ${copyENV} successfully!`);
