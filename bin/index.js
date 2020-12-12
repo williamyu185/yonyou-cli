@@ -70,7 +70,7 @@ if(shellMsg.isCopyOneOfENVToDist) {
     }
     child_process.exec(`cp -fr ./${ENV_dist}/${copyENV}/. ${dist}`, {}, (error, stdout, stderr) => {
       if(error !== null) {
-        console.log(`exec error: ${error}`);
+        console.log(`${error}`);
       }else {
         colorLog(`copy ${copyENV} successfully!`);
         child_process.exec(`rm -rf ./${ENV_dist}`, {});
@@ -95,7 +95,7 @@ if(shellMsg.isPublishAll) {
       let crossEnv = ENVConfig['NODE_ENV'] || ENV;
       child_process.exec(ENVConfig.execShell || `cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
         if (error !== null) {
-          console.log(`exec error: ${error}`);
+          console.log(`${error}`);
           reject(error)
         }else {
           console.log(`${stdout}`);
@@ -149,7 +149,7 @@ let cloneProjectError = null;
 child_process.execSync(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
     if (error !== null) {
       cloneProjectError = error;
-      console.log(`exec error: ${error}`);
+      console.log(`${error}`);
     }
 });
 if(!cloneProjectError) {
@@ -157,7 +157,7 @@ if(!cloneProjectError) {
 }
 child_process.exec(afterClone, {}, (error, stdout, stderr) => {
   if (error !== null) {
-    console.log(`exec error: ${error}`);
+    console.log(`${error}`);
   }else {
     colorLog(`Project created successfully!`);
   }
