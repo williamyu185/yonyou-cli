@@ -17,43 +17,48 @@ let isPublishAll = false;
 let isCopyOneOfENVToDist = false;
 let isCreateProject = false;
 
+let distRelated = {
+      ENV_dist,
+      dist,
+      cleanAndInstall,
+      cleanDist,
+      clean__ENV_dist__Dist
+    };
 let shellMsg = {
       projectName: 'coordination-cli',
       copyENV: '',
       isInstall: false,
-      distRelated: {
-        ENV_dist,
-        dist,
-        cleanAndInstall,
-        cleanDist,
-        clean__ENV_dist__Dist
-      }
+      distRelated
     };
 let isDesiredShellParam = (regStr, param) => {
   let regExp = new RegExp(regStr, 'ig');
   return regExp.test(param);
 };
-!argvs.length && (isCreateProject = true);
-argvs.forEach((item, index) => {
-  if(isDesiredShellParam('^-', item)) {
-    if((item == '-i') || (item == '--install')) {
-      shellMsg.isInstall = true;
+if(argvs.length) {
+  argvs.forEach((item, index) => {
+    if(isDesiredShellParam('^-', item)) {
+      if((item == '-i') || (item == '--install')) {
+        shellMsg.isInstall = true;
+      }
+      if(isDesiredShellParam('^--publishAll', item)) {
+        isPublishAll = true;
+      }
+      if(isDesiredShellParam('^--copyOneOfENVToDist=.+', item)) {
+        isCopyOneOfENVToDist = true;
+        shellMsg.copyENV = item.split('=')[1];
+      }
+      return;
     }
-    if(isDesiredShellParam('^--publishAll', item)) {
-      isPublishAll = true;
-    }
-    if(isDesiredShellParam('^--copyOneOfENVToDist=.+', item)) {
-      isCopyOneOfENVToDist = true;
-      shellMsg.copyENV = item.split('=')[1];
-    }
-  }else {
     if(index == 0) {
-      shellMsg.projectName = item;
-      isCreateProject = true;
+      if(argvs.length) {
+        shellMsg.projectName = item;
+        isCreateProject = true;
+      }
     }
-  }
-});
-
+  });
+}else {
+  isCreateProject = true;
+}
 if(isCopyOneOfENVToDist) {
   copyOneOfENVToDist(shellMsg);
   return;
