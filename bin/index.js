@@ -15,7 +15,7 @@ let clean__ENV_dist__Dist = `rm -rf ./${ENV_dist} ${dist}`;
 
 let isPublishAll = false;
 let isCopyOneOfENVToDist = false;
-let isCreatProject = false;
+let isCreateProject = false;
 
 let shellMsg = {
       projectName: 'coordination-cli',
@@ -33,7 +33,7 @@ let isDesiredShellParam = (regStr, param) => {
   let regExp = new RegExp(regStr, 'ig');
   return regExp.test(param);
 };
-!argvs.length && (shellMsg.isCreatProject = true);
+!argvs.length && (isCreateProject = true);
 argvs.forEach((item, index) => {
   if(isDesiredShellParam('^-', item)) {
     if((item == '-i') || (item == '--install')) {
@@ -49,7 +49,7 @@ argvs.forEach((item, index) => {
   }else {
     if(index == 0) {
       shellMsg.projectName = item;
-      isCreatProject = true;
+      isCreateProject = true;
     }
   }
 });
@@ -62,7 +62,7 @@ if(isPublishAll) {
   publishAll(shellMsg);
   return;
 }
-if(isCreatProject) {
+if(isCreateProject) {
   creatProject(shellMsg);
   return;
 }
