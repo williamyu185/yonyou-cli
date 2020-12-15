@@ -1,4 +1,5 @@
 let child_process = require('child_process');
+let {colorLog} = require('./console.js');
 
 let creatProject = (shellMsg) => {
   let afterClone = `cd ./${shellMsg.projectName} && rm -rf .git`;
