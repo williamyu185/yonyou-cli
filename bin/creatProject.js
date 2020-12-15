@@ -17,7 +17,7 @@ let creatProject = (shellMsg) => {
         console.log(`${error}`);
       }
   });
-  if(!cloneProjectError) {
+  if(cloneProjectError) {
     return;
   }
   child_process.exec(afterClone, {}, (error, stdout, stderr) => {
