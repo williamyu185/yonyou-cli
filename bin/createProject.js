@@ -8,8 +8,8 @@ let createProject = (shellMsg) => {
   }else {
     afterClone += ` && cd ../`;
   }
-  colorLog(`If the project is not created for a long time due to network reasons, please download the source zip package directly`, `cyan`);
-  colorLog(`Download address: https://github.com/williamyu185/yonyou-cli`, `cyan`);
+  colorLog(`If the project is not created for a long time due to network reasons, please download the source zip package directly`);
+  colorLog(`Download address: https://github.com/williamyu185/yonyou-cli`);
   let cloneProjectError = null;
   child_process.execSync(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
       if (error !== null) {

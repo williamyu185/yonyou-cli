@@ -23,7 +23,7 @@ let colorLog = (info, color) => {
     'cyanBG' : '\x1B[46m', // 背景色为青色
     'whiteBG' : '\x1B[47m' // 背景色为白色
   };
-  let defaultColor = allColor['red'];
+  let defaultColor = allColor['cyan'];
   console.log(`${color ? (allColor[color] || defaultColor) : defaultColor}${info}\x1B[0m`);
 };
 

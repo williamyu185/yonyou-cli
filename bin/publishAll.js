@@ -16,7 +16,7 @@ let publishAll = (shellMsg) => {
   let {bale} = ENVJson;
   let allPromise = [];
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
-  colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`, `cyan`);
+  colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`);
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
@@ -58,7 +58,7 @@ let publishAll = (shellMsg) => {
     zip.writeZip(`${ENV_dist}.zip`);
     child_process.exec(`rm -rf ./${ENV_dist}`, {});
   }).catch((error) => {
-    colorLog(`dist package failed!`);
+    colorLog(`dist package failed!`, 'red');
   });
 };
 
