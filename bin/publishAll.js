@@ -35,7 +35,7 @@ let publishAll = (shellMsg) => {
     }));
   }
   Promise.all(allPromise).then((arr) => {
-    colorLog(`All environments were packaged successfully!`);
+    colorLog(`All environments were packaged successfully!\r\n`);
     // new Promise((resolve, reject) => {
     //   child_process.exec(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`, {}, (error, stdout, stderr) => {
     //     if (error !== null) {
@@ -58,7 +58,7 @@ let publishAll = (shellMsg) => {
     zip.writeZip(`${ENV_dist}.zip`);
     child_process.exec(`rm -rf ./${ENV_dist}`, {});
   }).catch((error) => {
-    colorLog(`dist package failed!`, 'red');
+    colorLog(`dist package failed!`, `red`);
   });
 };
 
