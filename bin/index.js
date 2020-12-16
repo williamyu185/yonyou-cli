@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 let ENVJson = require('../env.js');
-let {creatProject} = require('./creatProject.js');
+let {createProject} = require('./createProject.js');
 let {publishAll} = require('./publishAll.js');
 let {copyOneOfENVToDist} = require('./copyOneOfENVToDist.js');
 
@@ -68,6 +68,6 @@ if(isPublishAll) {
   return;
 }
 if(isCreateProject) {
-  creatProject(shellMsg);
+  createProject(shellMsg);
   return;
 }

@@ -1,7 +1,7 @@
 let child_process = require('child_process');
 let {colorLog} = require('./console.js');
 
-let creatProject = (shellMsg) => {
+let createProject = (shellMsg) => {
   let afterClone = `cd ./${shellMsg.projectName} && rm -rf .git`;
   if(shellMsg.isInstall) {
     afterClone += ` && npm install && cd ../`;
@@ -30,5 +30,5 @@ let creatProject = (shellMsg) => {
 };
 
 module.exports = {
-  creatProject
+  createProject
 };
