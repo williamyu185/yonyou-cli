@@ -13,10 +13,6 @@ let cleanAndInstall = ENVJson['cleanAndInstall'] || `rm -rf ./node_modules && np
 let cleanDist = ENVJson['cleanDist'] || `rm -rf ./${ENV_dist} ./${ENV_dist}.zip ${dist}`;
 let clean__ENV_dist__Dist = `rm -rf ./${ENV_dist} ${dist}`;
 
-let isPublishAll = false;
-let isCopyOneOfENVToDist = false;
-let isCreateProject = false;
-
 let distRelated = {
       ENV_dist,
       dist,
@@ -30,6 +26,11 @@ let shellMsg = {
       isInstall: false,
       distRelated
     };
+
+let isPublishAll = false;
+let isCopyOneOfENVToDist = false;
+let isCreateProject = false;
+
 let isDesiredShellParam = (regStr, param) => {
   let regExp = new RegExp(regStr, 'ig');
   return regExp.test(param);
