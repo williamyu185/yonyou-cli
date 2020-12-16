@@ -40,7 +40,7 @@ let copyOneOfENVToDist = (shellMsg) => {
       if(error !== null) {
         console.log(`${error}`);
       }else {
-        colorLog(`copy ${copyENV} successfully!`);
+        colorLog(`\r\ncopy ${copyENV} successfully!\r\n`);
       }
       child_process.exec(`rm -rf ./${ENV_dist}`, {});
     });
