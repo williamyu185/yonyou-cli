@@ -16,6 +16,13 @@
   "bin": {
     "coordination-cli": "bin/index.js"
   },
+  "husky": {
+    "hooks": {
+      "post-merge": "",
+      "pre-rebase": "",
+      "commit-msg": ""
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/williamyu185/yonyou-cli.git"
@@ -51,6 +58,7 @@
     "file-loader": "^6.2.0",
     "happypack": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
+    "husky": "^4.3.6",
     "less": "^3.10.3",
     "less-loader": "^7.1.0",
     "lodash-webpack-plugin": "^0.11.5",

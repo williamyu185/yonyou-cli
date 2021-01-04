@@ -33,5 +33,6 @@ module.exports = {
     // shell语句。默认值rm -rf ./node_modules && npm install
     cleanAndInstall: '',
     // shell语句。默认值rm -rf ./${ENV_dist} ./${ENV_dist}.zip ${dist}
-    cleanDist: ''
+    cleanDist: '',
+    testBranch: ['u8c_daily', 'test_20170420']
 };
