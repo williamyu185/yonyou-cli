@@ -34,5 +34,5 @@ module.exports = {
     cleanAndInstall: '',
     // shell语句。默认值rm -rf ./${ENV_dist} ./${ENV_dist}.zip ${dist}
     cleanDist: '',
-    testBranch: ['u8c_daily', 'test_20170420']
+    testBranch: []
 };
