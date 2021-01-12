@@ -9,6 +9,7 @@ let publishAll = (shellMsg) => {
     cleanDist
   } = shellMsg.distRelated;
   let publishAllExecShell = ENVJson.publishAllExecShell;
+  child_process.execSync(`git pull`, {stdio: 'inherit'});
   if(publishAllExecShell) {
     child_process.execSync(`${publishAllExecShell}`, {stdio: 'inherit'});
     return;
