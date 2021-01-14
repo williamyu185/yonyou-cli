@@ -37,5 +37,5 @@ module.exports = {
     testBranch: [],
     // 在执行npm run publishAll指令时，是否在打包前拉取当前分支对应的远程分支代码
     // 保证打包前当前分支代码与远程代码保持一致。并在代码发生冲突等异常情况时，自动终止打包
-    beforePublishAllPullRemoteBranch: false
+    isPullRemoteBranchBeforePublishAll: false
 };

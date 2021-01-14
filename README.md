@@ -49,7 +49,7 @@
     testBranch: [],
     // 在执行npm run publishAll指令时，是否在打包前拉取当前分支对应的远程分支代码
     // 保证打包前当前分支代码与远程代码保持一致。并在代码发生冲突等异常情况时，自动终止打包
-    beforePublishAllPullRemoteBranch: true
+    isPullRemoteBranchBeforePublishAll: false
 }
 ```
 #### 3.6）--copyOneOfENVToDist：一般运维服务器执行此配置项对应的脚本执行语句(例如npm run daily)，从解压的目录中把daily目录下的所有文件复制到dist文件目录下

@@ -9,8 +9,8 @@ let publishAll = async (shellMsg) => {
     cleanDist
   } = shellMsg.distRelated;
   let publishAllExecShell = ENVJson.publishAllExecShell;
-  let beforePublishAllPullRemoteBranch = ENVJson.beforePublishAllPullRemoteBranch;
-  if(beforePublishAllPullRemoteBranch) {
+  let isPullRemoteBranchBeforePublishAll = ENVJson.isPullRemoteBranchBeforePublishAll;
+  if(isPullRemoteBranchBeforePublishAll) {
     colorLog(`Pulling the remote branch corresponding to the local branch`);
     await new Promise((resolve, reject) => {
       child_process.exec(`git pull`, {stdio: 'inherit'}, (error, stdout, stderr) => {
