@@ -13,7 +13,7 @@ let publishOneOfENVToDist = async (shellMsg) => {
   let ENVConfig = bale[copyOneOfENV];
   let crossEnv = ENVConfig['NODE_ENV'] || copyOneOfENV;
   let execShell = ENVConfig.execShell;
-  let isPullRemoteBranchBeforePublish = ENVJson.isPullRemoteBranchBeforePublish || false;
+  let isPullRemoteBranchBeforePublish = ENVConfig.isPullRemoteBranchBeforePublish || false;
   if(isPullRemoteBranchBeforePublish) {
     colorLog(`Pulling the remote branch corresponding to the local branch`);
     await new Promise((resolve, reject) => {
@@ -36,8 +36,8 @@ let publishOneOfENVToDist = async (shellMsg) => {
   let allPromise = [];
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
   colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`);
-  allPromise.push(new Promise((resolve, reject) => {
-    child_process.exec(`cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
+  new Promise((resolve, reject) => {
+    child_process.exec(`cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || copyOneOfENV}.js`, {}, (error, stdout, stderr) => {
       if (error !== null) {
         console.log(`${error}`);
         reject(error)
@@ -48,15 +48,14 @@ let publishOneOfENVToDist = async (shellMsg) => {
         resolve(null);
       }
     });
-  }));
-  Promise.all(allPromise).then((arr) => {
+  }).then(() => {
     let AdmZip = require('adm-zip');
     let zip = new AdmZip();
     zip.addLocalFolder(`${ENV_dist}`);
     zip.writeZip(`${ENV_dist}.zip`);
     child_process.exec(`rm -rf ./${ENV_dist}`, {});
     colorLog(`NODE_ENV ${crossEnv} were packaged successfully!\r\n`);
-  }).catch((error) => {
+  }, () => {
     colorLog(`dist package failed!`, `red`);
   });
 };

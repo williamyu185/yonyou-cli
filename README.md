@@ -6,7 +6,8 @@
 #### 3.2）第一个参数如果不以 - 符开头，将认为是即将创建项目的项目名，否则将采用coordination-cli作为默认项目名。
 #### 3.3）选项：
 ##### 3.3.1）-i，--install：创建完项目后将执行npm install为该项目安装node_modules包。
-##### 3.3.1）--publishAll：将env.js中bale字段配置的所有环境打包到一个zip压缩包中(npm run publishAll在本机环境中把env.js配置的各环境打包到本地，防止在运维环境或其他环境由于node版本等原因导致打包过程中发生各种异常)。
+##### 3.3.2）--publishAll：将env.js中bale字段配置的所有环境打包到一个zip压缩包中(npm run publishAll在本机环境中把env.js配置的各环境打包到本地，防止在运维环境或其他环境由于node版本等原因导致打包过程中发生各种异常)。
+##### 3.3.3）--publishOneOfENVToDist=${env}：在env.js文件中，bale对应的${env}字段配置的某一环境打包到一个zip压缩包中。
 #### 3.4）如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包。
 #### 3.5）env.js各配置项解释：
 ```
@@ -14,7 +15,12 @@
     // 配置需要打包的各环境
     bale: {
         // bale对象下的各key值，等价执行npm run test
-        test: {},
+        test: {
+            // 在package.json的script脚本中
+            // 在执行node ./bin/index.js --publishOneOfENVToDist=${test}指令时
+            // 是否在打包前拉取当前分支对应的远程分支代码
+            isPullRemoteBranchBeforePublish: true
+        },
         daily: {},
         smallProgramTest: {
             // 寻找webpack目录下的配置文件，等价执行webpack --progress --config ./webpack/test.js

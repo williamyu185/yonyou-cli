@@ -52,7 +52,7 @@ if(argvs.length) {
         shellMsg.copyENV = item.split('=')[1];
       }
       if(isDesiredShellParam('^--publishOneOfENVToDist=.+', item)) {
-        isCopyOneOfENVToDist = true;
+        isPublishOneOfENVToDist = true;
         shellMsg.copyOneOfENV = item.split('=')[1];
       }
       return;
