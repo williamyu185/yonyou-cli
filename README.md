@@ -59,7 +59,7 @@
     isPullRemoteBranchBeforePublishAll: false
 }
 ```
-#### 3.6）--copyOneOfENVToDist：一般运维服务器执行此配置项对应的脚本执行语句(例如npm run daily)，从解压的目录中把daily目录下的所有文件复制到dist文件目录下
+#### 3.6）--copyOneOfENVToDist=${NODE_ENV_or_baleKey}：一般运维服务器执行此配置项对应的脚本执行语句(例如npm run daily)，从解压的目录(${ENV_dist}目录下的各项目文件夹名称是bale中配置的NODE_ENV字段的value值或bale下的各key值)中把daily文件夹下的所有文件复制到dist文件目录下
 # 二、相关规范与配置项解读
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalUniquenessCoordinationCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalUniquenessCoordinationCliTopLevelObj对象下。
