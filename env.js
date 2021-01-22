@@ -10,7 +10,8 @@ module.exports = {
             webpackFile: 'test',
             // 如webpackFile、NODE_ENV等配置项无法满足实际业务需求
             // 配置此字段将优先执行该配置项自定义shell语句，其他配置项将无效
-            execShell: ''
+            execShell: '',
+            isPullRemoteBranchBeforePublish: true
         },
         dist: {
             // 环境变量，等价执行cross-env NODE_ENV=production。默认值为bale对象下对应的key值

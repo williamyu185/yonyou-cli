@@ -11,9 +11,10 @@ let publishOneOfENVToDist = async (shellMsg) => {
   let {bale} = ENVJson;
   let copyOneOfENV = shellMsg.copyOneOfENV;
   let ENVConfig = bale[copyOneOfENV];
+  let crossEnv = ENVConfig['NODE_ENV'] || copyOneOfENV;
   let execShell = ENVConfig.execShell;
-  let isPullRemoteBranchBeforePublishAll = ENVJson.isPullRemoteBranchBeforePublishAll;
-  if(isPullRemoteBranchBeforePublishAll) {
+  let isPullRemoteBranchBeforePublish = ENVJson.isPullRemoteBranchBeforePublish || false;
+  if(isPullRemoteBranchBeforePublish) {
     colorLog(`Pulling the remote branch corresponding to the local branch`);
     await new Promise((resolve, reject) => {
       child_process.exec(`git pull`, {stdio: 'inherit'}, (error, stdout, stderr) => {
@@ -36,7 +37,6 @@ let publishOneOfENVToDist = async (shellMsg) => {
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
   colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`);
   allPromise.push(new Promise((resolve, reject) => {
-    let crossEnv = ENVConfig['NODE_ENV'] || copyOneOfENV;
     child_process.exec(`cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || ENV}.js`, {}, (error, stdout, stderr) => {
       if (error !== null) {
         console.log(`${error}`);
