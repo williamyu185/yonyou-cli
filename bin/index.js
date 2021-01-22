@@ -4,6 +4,7 @@ let ENVJson = require('../env.js');
 let {createProject} = require('./createProject.js');
 let {publishAll} = require('./publishAll.js');
 let {copyOneOfENVToDist} = require('./copyOneOfENVToDist.js');
+let {publishOneOfENVToDist} = require('./publishOneOfENVToDist.js');
 
 let argvs = process.argv.splice(2);
 
@@ -24,12 +25,14 @@ let shellMsg = {
       projectName: 'coordination-cli',
       copyENV: '',
       isInstall: false,
-      distRelated
+      distRelated,
+      copyOneOfENV: ''
     };
 
 let isPublishAll = false;
 let isCopyOneOfENVToDist = false;
 let isCreateProject = false;
+let isPublishOneOfENVToDist = false;
 
 let isDesiredShellParam = (regStr, param) => {
   let regExp = new RegExp(regStr, 'ig');
@@ -47,6 +50,10 @@ if(argvs.length) {
       if(isDesiredShellParam('^--copyOneOfENVToDist=.+', item)) {
         isCopyOneOfENVToDist = true;
         shellMsg.copyENV = item.split('=')[1];
+      }
+      if(isDesiredShellParam('^--publishOneOfENVToDist=.+', item)) {
+        isCopyOneOfENVToDist = true;
+        shellMsg.copyOneOfENV = item.split('=')[1];
       }
       return;
     }
@@ -70,5 +77,9 @@ if(isPublishAll) {
 }
 if(isCreateProject) {
   createProject(shellMsg);
+  return;
+}
+if(isPublishOneOfENVToDist) {
+  publishOneOfENVToDist(shellMsg);
   return;
 }

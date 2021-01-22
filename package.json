@@ -11,7 +11,8 @@
     "dist": "node ./bin/index.js --copyOneOfENVToDist=production",
     "private": "node ./bin/index.js --copyOneOfENVToDist=private",
     "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
-    "publishAll": "node ./bin/index.js --publishAll"
+    "publishAll": "node ./bin/index.js --publishAll",
+    "publishTest": "node ./bin/index.js --publishOneOfENVToDist=test"
   },
   "bin": {
     "coordination-cli": "bin/index.js"
