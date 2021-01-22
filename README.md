@@ -19,6 +19,7 @@
             // 在package.json的script脚本中
             // 在执行node ./bin/index.js --publishOneOfENVToDist=${test}指令时
             // 是否在打包前拉取当前分支对应的远程分支代码
+            // 默认值false
             isPullRemoteBranchBeforePublish: true
         },
         daily: {},
