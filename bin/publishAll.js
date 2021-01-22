@@ -11,19 +11,9 @@ let publishAll = async (shellMsg) => {
   let publishAllExecShell = ENVJson.publishAllExecShell;
   let isPullRemoteBranchBeforePublishAll = ENVJson.isPullRemoteBranchBeforePublishAll;
   if(isPullRemoteBranchBeforePublishAll) {
-    colorLog(`Pulling the remote branch corresponding to the local branch`);
-    await new Promise((resolve, reject) => {
-      child_process.exec(`git pull`, {stdio: 'inherit'}, (error, stdout, stderr) => {
-        colorLog(`\r\n============   Git output information   ============\r\n`);
-        if(error !== null) {
-          colorLog(`\r\n${error}\r\n\r\n\r\n\r\n`, 'red');
-          reject();
-        }else {
-          colorLog(`\r\n${stdout}\r\n\r\n\r\n\r\n`);
-          resolve();
-        }
-      });
-    });
+    colorLog(`\r\nPulling the remote branch corresponding to the local branch\r\n`);
+    child_process.execSync(`git pull`, {stdio: 'inherit'});
+    colorLog(`\r\n\r\n`);
   }
   if(publishAllExecShell) {
     child_process.execSync(`${publishAllExecShell}`, {stdio: 'inherit'});
