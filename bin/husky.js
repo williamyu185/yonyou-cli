@@ -5,16 +5,12 @@ let {colorLog} = require('./console.js');
 let ENVJson, {testBranch} = require('../env.js');
 
 let postMerge = async () => {
-    let localBranch = '';
-    await new Promise((resolve, reject) => {
+    let localBranch = await new Promise((resolve, reject) => {
         child_process.exec(`git symbolic-ref --short HEAD`, {}, function(error, stdout, stderr) {
                 if(error !== null) {
-                    reject(error);
+                    resolve('');
                 }else {
-                    localBranch = stdout;
-                    resolve({
-                        localBranch
-                    });
+                    resolve(stdout);
                 }
             });
         });
@@ -41,11 +37,8 @@ let postMerge = async () => {
                         colorLog(`\r\n\r\nThis operation is dangerous.Please confirm this operation carefully!\r\n\r\n`, 'magentaBG')
                     }
                 }
-                resolve({
-                    remoteBranch
-                });
+                resolve(remoteBranch);
             }
-            
         });
     });
 };
