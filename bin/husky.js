@@ -3,7 +3,7 @@
 let child_process = require('child_process');
 let {colorLog} = require('./console.js');
 let ENVJson, {testBranch} = require('../env.js');
-console.log('5----')
+
 let postMerge = async () => {
     let localBranch = '';
     await new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ let postMerge = async () => {
                 if(remoteBranch) {
                     if(testBranch.indexOf(remoteBranch) != -1) {
                         colorLog(`\r\n\r\n\r\n\r\n\r\nWarning: you have merge the ${remoteBranch} branch into the ${localBranch} branch\r\n\r\n\r\n\r\n\r\n`, 'redBG')
-                        colorLog(`\r\n\r\nThis operation is dangerous.Please confirm this operation carefully?\r\n\r\n`, 'magentaBG')
+                        colorLog(`\r\n\r\nThis operation is dangerous.Please confirm this operation carefully!\r\n\r\n`, 'magentaBG')
                     }
                 }
                 resolve({
