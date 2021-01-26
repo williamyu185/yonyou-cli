@@ -3,7 +3,7 @@
 let child_process = require('child_process');
 let {colorLog} = require('./console.js');
 let ENVJson, {testBranch} = require('../env.js');
-
+console.log('5----')
 let postMerge = async () => {
     let localBranch = '';
     await new Promise((resolve, reject) => {
