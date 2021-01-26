@@ -31,8 +31,8 @@ let postMerge = async () => {
                 if(result.length >= 2) {
                     remoteBranch = result[1];
                 }
-                if(remoteBranch) {
-                    if(testBranch.indexOf(remoteBranch) != -1 && testBranch.indexOf(localBranch) == -1) {
+                if(remoteBranch && testBranch.indexOf(remoteBranch) != -1) {
+                    if(testBranch.indexOf(localBranch) == -1) {
                         colorLog(`\r\n\r\n\r\n\r\n\r\nWarning: you have merge the ${remoteBranch} branch into the ${localBranch} branch\r\n\r\n\r\n\r\n\r\n`, 'redBG')
                         colorLog(`\r\n\r\nThis operation is dangerous.Please confirm this operation carefully!\r\n\r\n`, 'magentaBG')
                     }
