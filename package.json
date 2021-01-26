@@ -19,9 +19,8 @@
   },
   "husky": {
     "hooks": {
-      "post-merge": "node ./bin/husky.js $HUSKY_GIT_PARAMS",
-      "pre-rebase": "",
-      "commit-msg": "echo $HUSKY_GIT_PARAMS"
+      "post-merge": "node ./bin/husky.js",
+      "commit-msg": ""
     }
   },
   "repository": {
