@@ -43,7 +43,7 @@ module.exports = {
     // 日常操作时，是禁止将测试环境分支代码合并进任何非测试环境分支的
     // 此字段为各测试环境分支名，比如测试环境分支名为test，配置字段为['test']后
     // 当在任何非测试分支（比如master）执行git pull origin test或git merge test时，都会给出醒目的提示警告
-    testBranch: ['test'],
+    testBranch: [],
     // 在执行npm run publishAll指令时，是否在打包前拉取当前分支对应的远程分支代码
     // 保证打包前当前分支代码与远程代码保持一致。并在代码发生冲突等异常情况时，自动终止打包
     isPullRemoteBranchBeforePublishAll: false
