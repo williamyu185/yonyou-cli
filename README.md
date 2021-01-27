@@ -53,16 +53,21 @@
     cleanAndInstall: '',
     // shell语句。默认值rm -rf ./${ENV_dist} ./${ENV_dist}.zip ${dist}
     cleanDist: '',
-    // 日常操作时，是禁止将测试环境分支代码合并进任何非测试环境分支的
-    // 此字段为各测试环境分支名，比如测试环境分支名为test，配置字段为['test']后
-    // 当在任何非测试分支（比如master）执行git pull origin test或git merge test时，都会给出醒目的提示警告
-    testBranch: [],
     // 在执行npm run publishAll指令时，是否在打包前拉取当前分支对应的远程分支代码
     // 保证打包前当前分支代码与远程代码保持一致。并在代码发生冲突等异常情况时，自动终止打包
     isPullRemoteBranchBeforePublishAll: false
 }
 ```
 #### 3.6）--copyOneOfENVToDist=${NODE_ENV_or_baleKey}：一般运维服务器执行此配置项对应的脚本执行语句(例如npm run daily)，从解压的目录(${ENV_dist}目录下的各项目文件夹名称是bale中配置的NODE_ENV字段的value值或bale下的各key值)中把daily文件夹下的所有文件复制到dist文件目录下
+#### 3.7）huskyConfig.js各配置项解释：
+```
+{
+    // 日常操作时，是禁止将测试环境分支代码合并进任何非测试环境分支的
+    // 此字段为各测试环境分支名，比如测试环境分支名为test，配置字段为['test']后
+    // 当在任何非测试分支（比如master）执行git pull origin test或git merge test时，都会给出醒目的提示警告
+    testBranch: [],
+}
+```
 # 二、相关规范与配置项解读
 ### 1.全局变量
 #### 1.1）项目中唯一的顶级全局对象是window.globalUniquenessCoordinationCliTopLevelObj，严禁在window下再添加其他全局对象，所有需要暴露的全局对象全部添加到window.globalUniquenessCoordinationCliTopLevelObj对象下。
