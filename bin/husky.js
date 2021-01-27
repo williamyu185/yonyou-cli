@@ -8,6 +8,7 @@ let postMerge = async () => {
     let localBranch = await new Promise((resolve, reject) => {
         child_process.exec(`git symbolic-ref --short HEAD`, {}, function(error, stdout, stderr) {
                 if(error !== null) {
+                    console.log(error);
                     resolve('');
                 }else {
                     resolve(stdout);
@@ -17,7 +18,8 @@ let postMerge = async () => {
     await new Promise((resolve, reject) => {
         child_process.exec(`git reflog -1`, {}, function(error, stdout, stderr) {
             if(error !== null) {
-                reject(error);
+                console.log(error);
+                resolve(error);
             }else {
                 let pullReg = /pull\sorigin\s(\w+?):/;
                 let mergeReg = /merge\s(\w+?):/;
@@ -37,7 +39,7 @@ let postMerge = async () => {
                         colorLog(`\r\n\r\nThis operation is dangerous.Please confirm this operation carefully!\r\n\r\n`, 'magentaBG')
                     }
                 }
-                resolve(remoteBranch);
+                resolve({remoteBranch});
             }
         });
     });
