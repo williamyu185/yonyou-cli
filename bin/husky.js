@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-let postMerge = require('./postMerge.js');
+let {postMerge} = require('./postMerge.js');
 let {testBranch} = require('../huskyConfig.js');
 let {isDesiredShellParam} = require('./utils.js');
 
