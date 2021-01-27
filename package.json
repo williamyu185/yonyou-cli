@@ -19,7 +19,7 @@
   },
   "husky": {
     "hooks": {
-      "post-merge": "node ./bin/husky.js",
+      "post-merge": "node ./bin/husky.js --git=pullOrMerge",
       "commit-msg": ""
     }
   },

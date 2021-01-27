@@ -5,6 +5,7 @@ let {createProject} = require('./createProject.js');
 let {publishAll} = require('./publishAll.js');
 let {copyOneOfENVToDist} = require('./copyOneOfENVToDist.js');
 let {publishOneOfENVToDist} = require('./publishOneOfENVToDist.js');
+let {isDesiredShellParam} = require('./utils.js');
 
 let argvs = process.argv.splice(2);
 
@@ -34,10 +35,6 @@ let isCopyOneOfENVToDist = false;
 let isCreateProject = false;
 let isPublishOneOfENVToDist = false;
 
-let isDesiredShellParam = (regStr, param) => {
-  let regExp = new RegExp(regStr, 'ig');
-  return regExp.test(param);
-};
 if(argvs.length) {
   argvs.forEach((item, index) => {
     if(isDesiredShellParam('^-', item)) {
@@ -83,3 +80,4 @@ if(isPublishOneOfENVToDist) {
   publishOneOfENVToDist(shellMsg);
   return;
 }
+module.exports = {};

@@ -26,7 +26,11 @@ let colorLog = (info, color) => {
   let defaultColor = allColor['cyan'];
   console.log(`${color ? (allColor[color] || defaultColor) : defaultColor}${info}\x1B[0m`);
 };
-
+let isDesiredShellParam = (regStr, param) => {
+  let regExp = new RegExp(regStr, 'ig');
+  return regExp.test(param);
+};
 module.exports = {
-  colorLog
+  colorLog,
+  isDesiredShellParam
 };
