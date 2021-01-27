@@ -1,6 +1,6 @@
 let child_process = require('child_process');
-let {colorLog} = require('./utils.js');
-let ENVJson = require('../env.js');
+let {colorLog} = require('../utils');
+let ENVJson = require('../../env.js');
 
 let publishAll = async (shellMsg) => {
   let {

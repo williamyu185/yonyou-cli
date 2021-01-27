@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 let child_process = require('child_process');
-let {colorLog} = require('./utils.js');
-let {testBranch} = require('../huskyConfig.js');
+let {colorLog} = require('../utils');
+let {testBranch} = require('../../huskyConfig.js');
 
 let postMerge = async () => {
     let localBranch = await new Promise((resolve, reject) => {

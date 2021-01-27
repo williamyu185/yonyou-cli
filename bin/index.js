@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 let ENVJson = require('../env.js');
-let {createProject} = require('./createProject.js');
-let {publishAll} = require('./publishAll.js');
-let {copyOneOfENVToDist} = require('./copyOneOfENVToDist.js');
-let {publishOneOfENVToDist} = require('./publishOneOfENVToDist.js');
-let {isDesiredShellParam} = require('./utils.js');
+let {createProject} = require('./script/createProject.js');
+let {publishAll} = require('./script/publishAll.js');
+let {copyOneOfENVToDist} = require('./script/copyOneOfENVToDist.js');
+let {publishOneOfENVToDist} = require('./script/publishOneOfENVToDist.js');
+let {isDesiredShellParam} = require('./utils');
 
 let argvs = process.argv.splice(2);
 

@@ -1,5 +1,5 @@
 let child_process = require('child_process');
-let {colorLog} = require('./utils.js');
+let {colorLog} = require('../utils');
 
 let createProject = (shellMsg) => {
   let afterClone = `cd ./${shellMsg.projectName} && rm -rf .git`;

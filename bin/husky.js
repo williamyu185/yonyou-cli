@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-let {postMerge} = require('./postMerge.js');
+let {postMerge} = require('./gitHooks/postMerge.js');
 let {testBranch} = require('../huskyConfig.js');
-let {isDesiredShellParam} = require('./utils.js');
+let {isDesiredShellParam} = require('./utils');
 
 let argvs = process.argv.splice(2);
 let isPostMerge = false;

@@ -1,5 +1,5 @@
 let child_process = require('child_process');
-let {colorLog} = require('./utils.js');
+let {colorLog} = require('../utils');
 
 let copyOneOfENVToDist = (shellMsg) => {
   let {
