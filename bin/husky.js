@@ -10,8 +10,10 @@ let isPostMerge = false;
 if(argvs.length) {
     argvs.forEach((item, index) => {
         if(isDesiredShellParam('^--git=.+', item)) {
-            isPostMerge = true;
-            shellMsg.copyENV = item.split('=')[1];
+            let param = item.split('=')[1];
+            if(param == 'pullOrMerge') {
+                isPostMerge = true;
+            }
         }
     });
 }
