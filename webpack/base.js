@@ -115,10 +115,11 @@ module.exports = {
         // 压缩js代码
 		minimizer: [
 			new TerserWebpackPlugin({
+				test: /\.js(\?.*)?$/i,
 				parallel: true,
 				sourceMap: true,
 				terserOptions: {},
-				sourceMap: !isDev
+				// sourceMap: !isDev
 			})
 		],
 		splitChunks: {
