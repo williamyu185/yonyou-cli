@@ -27,7 +27,8 @@ let shellMsg = {
       copyENV: '',
       isInstall: false,
       distRelated,
-      copyOneOfENV: ''
+      copyOneOfENV: '',
+      isVue3: false
     };
 
 let isPublishAll = false;
@@ -40,6 +41,9 @@ if(argvs.length) {
     if(isDesiredShellParam('^-', item)) {
       if((item == '-i') || (item == '--install')) {
         shellMsg.isInstall = true;
+      }
+      if(isDesiredShellParam('^--vue3', item)) {
+        shellMsg.isVue3 = true;
       }
       if(isDesiredShellParam('^--publishAll', item)) {
         isPublishAll = true;
