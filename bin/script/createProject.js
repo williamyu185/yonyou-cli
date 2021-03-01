@@ -9,9 +9,9 @@ let createProject = (shellMsg) => {
     afterClone += ` && cd ../`;
   }
   colorLog(`If the project is not created for a long time due to network reasons, please download the source zip package directly`);
-  colorLog(`Download address: https://github.com/williamyu185/yonyou-cli`);
   let cloneProjectError = null;
   if(shellMsg.isVue3) {
+    colorLog(`Download address: git clone https://github.com/williamyu185/vue3-cli.git`);
     child_process.execSync(`git clone https://github.com/williamyu185/vue3-cli.git ${shellMsg.projectName}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
       if (error !== null) {
         cloneProjectError = error;
@@ -19,6 +19,7 @@ let createProject = (shellMsg) => {
       }
     });
   }else {
+    colorLog(`Download address: https://github.com/williamyu185/yonyou-cli`);
     child_process.execSync(`git clone https://github.com/williamyu185/yonyou-cli.git ${shellMsg.projectName}`, {stdio: 'inherit'}, (error, stdout, stderr) => {
       if (error !== null) {
         cloneProjectError = error;
