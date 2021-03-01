@@ -43,6 +43,7 @@ if(argvs.length) {
         shellMsg.isInstall = true;
       }
       if(isDesiredShellParam('^--vue3', item)) {
+        isCreateProject = true;
         shellMsg.isVue3 = true;
       }
       if(isDesiredShellParam('^--publishAll', item)) {
