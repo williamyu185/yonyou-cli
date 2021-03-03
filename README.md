@@ -8,6 +8,7 @@
 ##### 3.3.1）-i，--install：创建完项目后将执行npm install为该项目安装node_modules包。
 ##### 3.3.2）--publishAll：将env.js中bale字段配置的所有环境打包到一个zip压缩包中(npm run publishAll在本机环境中把env.js配置的各环境打包到本地，防止在运维环境或其他环境由于node版本等原因导致打包过程中发生各种异常)。
 ##### 3.3.3）--publishOneOfENVToDist=${env}：在env.js文件中，bale对应的${env}字段配置的某一环境打包到一个zip压缩包中。
+##### 3.3.4）--vue3：下载vue3+typescript+vue-cli-serve的脚手架工具框架。
 #### 3.4）如因网络原因，执行指令后项目长时间未创建，请直接下载源码zip包。
 #### 3.5）env.js各配置项解释：
 ```
